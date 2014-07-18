@@ -1,0 +1,9 @@
+#status { position: relative; }
+#user-info { position: absolute; top: 0; right: 0; }
+#search {
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50FFFFFF,endColorstr=#50FFFFFF);
+	zoom: 1;
+}
+#search .search-string input.type-text { margin-top: 3px; border: solid 1px #FFF; }
+#search .search-btn { float: left; }

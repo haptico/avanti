@@ -1,0 +1,30 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+error_reporting( E_ALL ^ E_NOTICE   );
+session_start();
+require_once '../includes/globais.inc.php';
+require_once 'init.inc.php';
+
+$id = $_REQUEST["id"];
+$output = '';
+if(intval($id) > 0){
+    $docs= DocumentoFiberAction::getLista($id);
+    if(count($docs)> 0){
+        $output = "<table border='1'><tr><td>Descrição</td><td>Documento</td></tr>";
+        foreach ($docs as $doc) {
+            if(is_file('../files/fiber/'.$doc->getPath())){
+                $output .= <<<EOT
+                    <tr><td>{$doc->getDescricao()}</td><td><a href="inc/download.php?arquivo=files/fiber/{$doc->getPath()}" >&bull;&nbsp;&nbsp;{$doc->getPath()}</a></td></tr>
+EOT;
+            }
+        }
+        $output .= "</table>";
+    }else{
+        $output = "<p style='padding:10px'><b>- Nenhum anexo -</b></p>";
+    }
+}else{
+    $output = "ERRO. Não foi possível carregar os anexos";
+}
+echo json_encode(utf8_encode($output));
+exit();
+?>

@@ -1,0 +1,121 @@
+body {
+    /*    font:13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;*/
+    font-family: Arial,sans-serif;
+}
+a:focus {
+    outline:1px dotted
+}
+hr {
+    border:0 #ccc solid;
+    border-top-width:1px;
+    clear:both;
+    height:0
+}
+h1 {
+    font-size:25px;
+    color: #666;
+}
+h2 {
+    font-size:23px;
+    color: #666;
+}
+h3 {
+    font-size:21px;
+    color: #666;
+}
+h4 {
+    font-size:19px;
+    color: #666;
+}
+h5 {
+    font-size:17px;
+    color: #666;
+}
+h6 {
+    font-size:15px;
+    color: #666;
+}
+ol {
+    list-style:decimal
+}
+ul {
+    list-style:disc
+}
+li {
+    /*    margin-left:30px*/
+}
+dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+    list-style: none;
+    margin-bottom:5px
+}
+p.info {
+    font-size: 11px;
+    color: #00B75B;
+    text-align: center;
+}
+h1.alert {
+    background:url(../img/icons/alert.png) left top no-repeat;
+    float: left;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666;
+    margin:0px 0px 10px 0px;
+    height: 35px;
+    padding: 10px 0px 0px 50px;
+}
+h1.alert_red {
+    background:url(../img/icons/deny.png) left top no-repeat;
+    float: left;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666;
+    margin:0px 0px 10px 0px;
+    height: 47px;
+    padding: 10px 0px 0px 60px;
+}
+h1.titulo {
+    color: #666666;
+    float: left;
+    font-family: "Lucida Sans Unicode","Lucida Sans","Trebuchet MS",Arial,sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+.a_mais{
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    background-color: #ffff99;
+    margin-left: 3px;
+}
+
+.lp {
+    background-color: #FFFFFF !important;
+}
+.cscDados  {
+    background-color: #CCFFFF !important;
+}
+.cscTx {
+    background-color:#fcd5b4 !important;
+}
+.css {
+    background-color:#c2d69a !important;
+}
+.DeepSkyBlue {
+    background-color:#00BFFF !important;
+}  	
+.LightSkyBlue {
+    background-color:#87CEFA !important;
+}  	
+.Wheat {
+    background-color:#F5DEB3 !important;
+}  	
+.Orange {
+    background-color:#FFA500 !important;
+}
+.validateCondicional {
+    border : 1px solid #3339E0 !important;
+    background-color : #C5C7F9;
+}

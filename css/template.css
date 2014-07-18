@@ -1,0 +1,551 @@
+h1.alerth1.alert {
+    background:url(../imagens/icones/modelo1/Warning32.png) left top no-repeat;
+    float: left;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666;
+    margin:0px 0px 10px 0px;
+    width: 94%;
+    height: 47px;
+    padding: 10px 0px 0px 60px;
+}
+h1.alert_red {
+    background:url(../img/deny.png) left top no-repeat;
+    float: left;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666;
+    margin:0px 0px 10px 0px;
+    height: 47px;
+    padding: 10px 0px 0px 60px;
+}
+img.module-desc {
+    margin-left: -10px;
+}
+div.filtos_realizados {
+    background: url("../img/Refresh.jpg") 5px 20% no-repeat;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    width:100%;
+    border-bottom:1px dotted #BEBEBE;
+    float:left;
+    padding:5px 0px 0px 0px;
+    margin:0px 0px 5px 0px;
+}
+div.filtos_realizados h3 {
+    color: #666666;
+    float: left;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 17px;
+    font-weight: normal;
+    height: 30px;
+    width: 150px;
+    margin:0px 0px 0px 50px;
+}
+input.filtro_realizado, select.filtro_realizado{
+    background-color: #AFCEEE;
+}
+div.filtos_realizados ul li {
+    font-size: 11px;
+    height:auto;
+    width: 330px;
+    float:left;
+    color: #666;
+    margin:0px 0px 0px 10px;
+}
+
+div.relatorioTitulo, table.tableList div.relatorioTitulo {
+    background: url("../img/datagrid.th-light-bg.jpg") repeat-x scroll left top #9FAFD5;
+    width:100%;
+    float: left;
+    padding: 5px;
+    width: 99.3%;
+}
+div.relatorioTitulo h2, table.tableList div.relatorioTitulo h2 {
+    font-family:Tahoma, Geneva;
+    font-size:16px;
+    color:#FFF;
+    text-align:center;
+    margin:0px 0px 0px 0px;
+}
+div.debugs {
+    width:98%;
+    height:auto;
+    padding:0px;
+    margin:2px 0px 0px 20px;
+}
+div.debugs a {
+    width:300px;
+    cursor:pointer;
+    color:#FE0505;
+}
+div.debugs a:hover {
+    color:#03F;
+    text-decoration:underline;
+}
+div.debugs a p {
+    width:300px;
+    margin:0px 0px 0px 0px;
+}
+div.debugs textarea {
+    width:95%;
+    height:200px;
+    padding:0px;
+    margin:2px 0px;
+}
+a.cancelarGL:hover {
+    text-decoration: none !important;
+}
+
+a.handover {
+    float:left;
+    margin: 0px 0px 0px 0px;
+    width: 130px;
+    text-decoration:none;
+}
+a.handover:hover {
+    text-decoration: none !important;
+
+}
+a.handover p {
+    font-size: 16px;
+    font-weight: bold;
+    color:#FFFFFF;
+    float: right;
+    margin: 10px 0px 0px 0px;
+}
+/*table.tableMacro {
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+table.tableMacro tbody tr td {
+    border:2px solid #CDCDCD !important;
+}
+table.tableMacro tbody th {
+    background-color:#FFF !important;
+}*/
+/*table.tableList {
+    font-family:arial;
+    	border: 2px solid #CDCDCD; 
+    margin:0px 0pt 15px;
+    width: 100%;
+    text-align: left;
+}
+table.tableList thead tr.header {
+    background-image:url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+table.tableList thead tr.header th.destaque {
+    font-size:20px;
+    color:#FFFFFF;
+    text-align:center;
+}
+table.tableList thead tr th, table.tableList tfoot tr th {
+    background-color: #4F95DD;
+    border: 2px solid #CDCDCD;
+    color:#FFFFFF;
+    font-family: Calibri;
+    text-align:center;
+    font-size: 12px;
+    padding: 4px;
+    height:30px;
+}
+table.tableList thead tr th a, table.tableList tfoot tr th a {
+    color:#FFFFFF;
+    font-size: 16px;
+    text-decoration:none;
+}
+table.tableList thead tr th a:hover, table.tableList tfoot tr th a:hover {
+    text-decoration:underline;
+}
+table.tableList thead tr td, table.tableList tfoot tr td {
+    background-color: #E6EEEE;
+    border: 2px solid #CDCDCD;
+    font-family: Calibri;
+    font-size: 12px;
+    font-weight:bold;
+    padding: 4px;
+    text-align:center;
+}
+table.tableList tbody td {
+    color: #3D3D3D;
+    border: 2px solid #CDCDCD;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+table.tableList tbody td table tbody tr td, table.tableList thead td table tbody tr td {
+    padding: 3px 5px;
+    margin: 5px 0px 5px 0px;
+    margin:0px;
+    color:#555
+}
+table.tableList tbody td table tbody tr td b, table.tableList thead td table tbody tr td b {
+    padding: 0px;
+    margin:0px 0px 0px 10px;
+}
+table.tableList tbody td table tbody tr td a, table.tableList thead td table tbody tr td a {
+    display: block;
+
+    text-decoration:none;
+}
+table.tableList tbody td table tbody tr td a img, table.tableList thead td table tbody tr td a img {
+    border: 0px none;
+    padding: 0px;
+    margin:0px 5px -7px 5px;
+}
+table.tableList tbody td table tbody tr td b a img, table.tableList thead td table tbody tr td b a img {
+    border: 0px none;
+    padding: 0px;
+    margin:0px 5px -7px 5px;
+}
+table.tableList tbody th {
+    background-color: #E6EEEE;
+    border: 2px solid #CDCDCD;
+    padding: 4px;
+    text-align:center;
+}
+table.tableList tbody td a, table.tableList tbody th a {
+    color:#00F;
+    text-decoration:none;
+}
+table.tableList tbody tr.odd td {
+    background-color:#F0F0F6;
+}*/
+.link_switch_implant{
+    font-size:16px;
+    font-weight:bold;
+    color:#666;
+    text-decoration:none;
+    margin:0px 0px 5px 0px;
+    padding:0px 0px 10px 20px;
+}
+a.more {
+    display:block;
+    background:url(../img/more.png) no-repeat center left;
+    min-width:16px;
+    padding:0px 0px 0px 20px;
+    cursor:pointer;
+}
+a.minus {
+    display:block;
+    background:url(../img/minus.png) no-repeat center left;
+    min-width: 16px;
+    margin:0px 0px 5px 0px;
+    padding:0px 0px 0px 20px;
+    cursor:pointer;
+}
+legend.more {
+    display:block;
+    background:url(../img/more.png) no-repeat center left;
+    padding:0px 0px 0px 20px;
+    cursor:pointer;
+}
+legend.minus {
+    display:block;
+    background:url(../img/minus.png) no-repeat center left;
+    padding:0px 0px 0px 20px;
+    cursor:pointer;
+}
+
+.texto {
+    font-size: 11px;
+    font-family: verdana;
+    font-style: normal;
+    font-weight: normal;
+    width:auto;
+}
+.selecao {
+    font-size: 11px;
+    font-family: verdana;
+    font-style: normal;
+    font-weight: normal;
+    width:auto;
+}
+#label {
+    font-size: 11px;
+    font-family: verdana;
+}
+#label_paragrafo {
+    font-size: 11px;
+    font-family: verdana;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+#botoes {
+    font-size: 11px;
+    font-family: verdana;
+    font-style: normal;
+    font-weight: normal;
+    width:auto;
+}
+a img.sys_img {
+    border:0  none;
+    width:20px;
+    height:20px;
+    float:left;
+    margin:0px 5px 0px 5px;
+    padding:0px;
+}
+a span {
+    /*    float:left;
+        margin:0px 5px 0px 0px;*/
+    padding:0px;
+}
+/*div#study div#project table, div#study div#access table, div#union fieldset.own_access table {
+    border:0px none;
+    margin:0px 0px 5px 0px;
+}*/
+
+.fs_trail_cancelado{ background-color:#FFFFFF; border: 1px solid #AF312B; height: auto; padding: 10px 5px 5px; width: 95%; }
+.fs_trail_cancelar{ float:right; }
+.fs_trail_cancelado legend { background-color:#AF312B; color:#FFF; }
+.fs_trail_arquivado{ background-color:#FFFFFF; border: 1px solid #000000; height: auto; padding: 10px 5px 5px; width: 95%; }
+.fs_trail_arquivado legend { background-color:#000000; color:#FFF; }
+.t_reserva{
+    background-color:#FFFFFF;
+    border: 1px solid #284091;
+    height: auto;
+    padding: 10px 5px 5px;
+    width: 95%;
+}
+.fs_trail legend {
+    background-color:#284091;
+    color:#FFF;
+}
+.t_reserva legend a{
+    background-color:#E6EEEE;
+    color:#000;
+}
+.img_box_reserva{
+    vertical-align: middle;
+}
+.t_reserva legend{
+    background-color:#E6EEEE;
+    color:#FFFFFF;
+}
+fieldset.trail fieldset {
+    border: 1px dotted #CDCDCD;
+    height: auto;
+    padding: 10px 5px 5px;
+    margin:3px 0px 0px 0px;
+    width: 95%;
+}
+fieldset.trail div {
+    width:100%;
+    float:left;
+}
+fieldset.trail fieldset p {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,sans-serif;
+    color:#333333;
+}
+fieldset.trail fieldset p b {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,sans-serif;
+    color:#333333;
+    font-size:10px;
+}
+fieldset.trail a {
+    color:#333333;
+    font-weight:bold;
+    font-size:10px;
+
+    text-decoration:none;
+    padding:0px 0px 0px 0px;
+}
+fieldset.trail legend a {
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size:10px;
+    text-decoration:none;
+    padding:0px 0px 0px 0px;
+}
+fieldset.trail legend img, fieldset.trail div a img {
+
+    margin: 0px 5px 0px 0px;
+    padding:0px 0px 0px 0px;
+}
+fieldset.trail a:hover {
+    text-decoration:underline;
+}
+.alert_cadastro{float:left;border:1px solid red;color: red;padding:10px 15px;line-height:15px;background-color:#fff;font-size:12px;margin:0 auto 5px auto;width:97.5%}
+.alert_sucesso{float:left;border:1px solid green;color: green;padding:10px 15px;line-height:15px;background-color:#fff;font-size:12px;margin:0 auto 5px auto;width:97.5%; overflow:hidden;}
+.alert_cadastro a{font-size: 12px;color:#000650;font-weight: bold}
+img.img_clicavel {
+    cursor: pointer;
+}
+div.wide {
+    width: 92% !important;
+}
+div.default {
+    width:66%;
+}
+fieldset.widefieldset {
+    width: 41% !important;
+}
+.hidetrail {
+    width: 4% !important;
+}
+.hide {
+    display: none;
+}
+a#retract_expand {
+    color: #000;
+    display: block;
+    font-size: 10px;
+    text-decoration: none; 
+    width: 75%;
+    height: 18px;
+}
+.retract {
+    background: url(../img/media_CadastroExpandir.gif) no-repeat scroll right top transparent !important;
+    padding: 0 18px 0 0px !important;
+}
+.expand {
+    background: url(../img/retrair.gif) no-repeat scroll left top transparent;
+    padding: 0px 0px 0px 20px;
+}
+#padraoTD{border: 2px solid #CDCDCD;}
+table.tablesorter tbody .realce td, table.tableLista tbody .realce td{background-color:#FFCCCC;  }
+.yellow {background-color:#FFFF97 !important;color:#008B00 !important;}
+.yellow a {color:#008B00 !important;}
+.red {background-color:#FF5959 !important;color:#FFFFFF !important; border: 1px solid #4F4F4F !important;}
+.red a {color:#FFFFFF !important;}
+.white {background-color:#FFFFFF !important;color:#000000 !important;}
+.white a {color:#000000 !important;}
+
+.div_trail_info{ float:left; padding:0 0 0 20px; width:auto; }
+.div_trail_obs{ clear:both; padding:5px 0 5px 10px; }
+
+table.tableList tbody td .sem_borda{border:0;}
+.span_alert{     color: #ff0000;    }
+.span_ok{        color: #228B22;    }
+.invalido{ background: #FFCCCC !important}
+.readonly{ background: #CCCCCC !important}
+
+.branco{background:#FFFFFF !important;}
+.vinho{background:#953735 !important;}
+.vinhoClaro{background:#E6B9B8 !important;}
+.azul{background:#4F81BD !important;}
+.azulClaro{background:#8DB4E3 !important;}
+.laranja{background:#E46D0A !important;}
+.laranjaClaro{background:#FAC090 !important;}
+.roxo{background:#60497B !important;}
+.roxoClaro{background:#B2A1C7 !important;}
+.verde{background:#75923C !important;}
+.verdeClaro{background:#98FB98 !important;}
+.vermelho{background:#FF0000 !important;}
+.rosa{background:#FF0066 !important;}
+.amarelo{background:#FFFF00 !important;}
+
+.letraPreta{color:#000000 !important; font-weight:bold;}
+.letraBranca{color:#FFFFFF !important;}
+/*table.tablesorter tbody tr td.zebra1{background-color: #dce6f1;}*/
+
+/*Estilos a serem aplicados ao painel dashboard*/
+div#reportsInfo {
+    float: left;
+    width: 100%;
+    border-bottom: 1px dotted #CCCCCC;
+    margin: 0px 0px 10px 0px;
+}
+div#reportsInfo h3 {
+    font-size: 21px;
+    color: #4F95DD;
+    margin: 0px;
+}
+div#reportsInfo ul li {
+    font-size: 17px !important;
+    color: black;
+    margin: 0px;
+}
+div#reportsInfo ul li p {
+    font-size: 17px !important;
+}
+div#dashboard {
+    width: 100%;
+}
+div#dashboard table {
+    float: left;
+    width: 49%;
+    margin: 0px 5px;
+}
+
+
+table.dashboard {width: 100%; margin: 5px 0px;}
+/*table.dashboard thead tr th, table.dashboard thead tr td {
+    border: 1px solid black; background-color: #4F95DD; color: white; padding: 5px;
+}*/
+table.dashboard thead tr th {
+    border: 1px solid black; background-color: #4F95DD; color: white; padding: 5px;
+}
+table.dashboard thead tr td {
+    border: 1px solid black; background-color: #FFFFFF; color: #000000; padding: 5px; font-style: italic;
+}
+table.dashboard thead tr th span.nota {color: white; font-style: italic}
+/*table.dashboard thead tr td {color: black}*/
+table.dashboard thead tr td h3 {background-color: white; color: #4F95DD}
+
+table.dashboard tbody tr th, table.dashboard tbody tr td {
+    padding: 5px;
+    color: black !important;
+    border: 1px solid #CCCCCC;
+}
+table.dashboard tbody tr td.noborder {background-color: white; color: black !important; padding-left: 5px; padding-right: 5px; border: none}
+table.dashboard tbody tr td a.ablue {color: blue !important; text-decoration: none;}
+table.dashboard tbody tr td a.ared {color: red !important; text-decoration: none;}
+table.dashboard tbody tr td a.agreen {color: green !important; text-decoration: none;}
+table.dashboard tbody tr td span.ablue {color: blue !important}
+table.dashboard tbody tr td span.ared {color: red !important}
+table.dashboard tbody tr td span.agreen {color: green !important}
+table.dashboard tbody tr td input[type="button"], 
+table.dashboard tbody tr td input[type="reset"], 
+table.dashboard tbody tr td input[type="submit"] {
+    background-color: #808080; 
+    color: white; 
+    font-weight: bolder; 
+    font-size: larger; 
+    border: 0 none; 
+    width: 200px; 
+    height: 30px;
+    margin: 0px 0px 10px 0px;
+}
+/*table.dashboard tbody tr td input[type="submit"] {background-color: #808080; color: white; font-weight: bolder; font-size: larger;display: inline; border: none; width: 150px;}*/
+table.dashboard tbody tr.dash_even {background-color: #dce6f1;}
+table.dashboard tbody tr.dash_even td {background-color: #dce6f1; color: black}
+table.dashboard tfoot tr {background-color: white;text-align: left}
+table.dashboard tfoot tr td {background-color: white;text-align: left}
+
+table.dashboard tbody tr td.bl {border-left:  2px solid black}
+table.dashboard tbody tr td.br {border-right: 2px solid black}
+table.dashboard tbody tr td.bt {border-top:   2px solid black}
+table.dashboard tbody tr td.bb {border-bottom: 2px solid black}
+
+table.dashboard tbody tr th.bl {border-left:  2px solid black}
+table.dashboard tbody tr th.br {border-right: 2px solid black}
+table.dashboard tbody tr th.bt {border-top:   2px solid black}
+table.dashboard tbody tr th.bb {border-bottom: 2px solid black}
+
+table.dashboard tfoot tr td span.nota {background-color: white;text-align: left; font-style: italic}
+table.dashboard tfoot tr th {
+    background-color: #4F95DD;
+    border: 1px solid black;
+    color: white;
+    padding: 5px;
+}
+table.dashboard select {background-color: #4F95DD; color: white;font-weight: bolder; border: none}
+
+table.dashboard tbody tr td.maisOpcoes {text-align: left;}
+table.dashboard tbody tr td.maisOpcoes select {background-color: white; color: black; font-weight: bolder; border: 1px solid black; width: 150px}
+
+.connectedSortable{
+    padding-bottom: 30px;
+    background:  	#CFCFCF;
+}
+
+div.medium fieldset{
+    padding:5px 0 5px 20px;
+    width:85%;
+}

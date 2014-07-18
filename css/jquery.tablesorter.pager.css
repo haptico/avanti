@@ -1,0 +1,75 @@
+div.tablesorterPager {
+    background-color:#D6D2C2;
+    padding:10px 0;
+    text-align:center;
+}
+div.tablesorterPager span {
+    padding:0 5px;
+}
+div.tablesorterPager input.prev {
+    margin-right:10px;
+    width:auto;
+}
+div.tablesorterPager input.next {
+    margin-left:10px;
+    width:auto;
+}
+div.tablesorterPager input {
+    border:1px solid #330000;
+    text-align:center;
+    width:50px;
+}
+.pager {
+    text-align:center;
+    width:100%;
+}
+.pagedisplay {
+    border:medium none;
+    font-size:12px;
+    height:auto;
+    overflow:hidden;
+    text-align:center;
+    width:30px;
+}
+.disab {
+    border:medium none;
+    color:gray;
+    cursor:not-allowed;
+    font-size:11px;
+    font-weight:bold;
+    margin:0 0 0 10px;
+    text-align:center;
+    text-decoration:none;
+}
+.first, .prev, .next, .last {
+    color:#545454;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+    margin:0 0 0 10px;
+    text-decoration:none;
+}
+.exibePag {
+    clear:both;
+    font-size:12px;
+    overflow:hidden;
+    padding:10px 10px 10px 0;
+    text-align:center;
+}
+.exibePag2 {
+    font-size:12px;
+    overflow:hidden;
+    padding:10px 0;
+}
+.pagesize {
+    background:none repeat scroll 0 0 #EDEEF0;
+    border:1px solid #9F9D9E;
+    color:#22314E;
+    font-size:12px;
+    width:50px;
+}
+#paginacao {
+    text-align:center;
+}
+
+table.tablesorter tbody td a{text-decoration:none;}

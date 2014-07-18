@@ -1,0 +1,46 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+error_reporting( E_ALL ^ E_NOTICE   );
+session_start();
+require_once '../includes/globais.inc.php';
+require_once 'init.inc.php';
+
+$id = $_REQUEST["id"];
+$output = '';
+if(intval($id) > 0){
+    $docs= DocumentoAction::getLista(Documento::ACESSO, $id);
+    if(count($docs)> 0){
+        $output  = "<p>Anexos do Acesso:</p>";
+        $output .= "<ul>\n";
+        foreach ($docs as $doc) {
+            if(is_file('../files/gl/'.$doc->getPath())){
+                $output .= <<<EOT
+                    <li><a href="inc/download.php?arquivo=files/gl/{$doc->getPath()}" >&bull;&nbsp;&nbsp;{$doc->getPath()}</a></li>
+EOT;
+            }
+        }
+        $output .= "</ul>\n";
+    }
+    $idTrail = EvtAcessoAction::getIdTrailByIdAcesso($id);
+    $docsT = DocumentoAction::getLista(Documento::TRAIL, $idTrail);
+    if(count($docsT)> 0){
+        $output .= "<p>Anexos do Trail:</p>";
+        $output .= "<ul>\n";
+        foreach ($docsT as $doc) {
+            if(is_file('../files/trail/'.$doc->getPath())){
+                $output .= <<<EOT
+                    <li><a href="inc/download.php?arquivo=files/trail/{$doc->getPath()}" >&bull;&nbsp;&nbsp;{$doc->getPath()}</a></li>
+EOT;
+            }
+        }
+        $output .= "</ul>\n";
+    }
+}else{
+    $output = "ERRO. Não foi possível carregar os anexos";
+}
+if($output == ''){
+    $output = "<p style='padding:10px'><b>- Nenhum anexo -</b></p>";
+}
+echo json_encode($output);
+exit();
+?>

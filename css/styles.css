@@ -1,0 +1,565 @@
+.invisible {
+    display: none;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+.invisibletwo {
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+div.hide {
+    display: none !important;
+}
+div.display {
+    display: block !important;
+}
+
+div#container {
+    width:100%;
+}
+
+/* Start Statu Bar */
+div#status {
+    background: #000 url(../img/status/bg.jpg) repeat-x top left;
+    height: 28px;
+    min-width: 990px;
+    width: 100%;
+    float:left;
+}
+div#status span.dataPorEstenso {
+    float:left;
+    padding: 0 10px;
+    /*font-family: "Trebuchet MS", Arial, Helvetica;*/
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+}
+div#status div#user {
+    width: 100%;
+    height: 23px;
+    background-color: #3669B2;
+    background-image: -moz-linear-gradient(top, #5685CB, #3669B2, #3669B2);
+    background-image: -ms-linear-gradient(top, #5685CB, #3669B2, #3669B2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#61b0df), to(#369bd7));
+    background-image: -webkit-linear-gradient(top, #5685CB, #3669B2, #3669B2);
+    background-image: -o-linear-gradient(top, #5685CB, #3669B2, #3669B2);
+    background-image: linear-gradient(top, #5685CB, #3669B2, #3669B2);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#61b0df', endColorstr='#369bd7', GradientType=0);
+    float: left;
+    padding:5px 0px 0px 0px;
+}
+div#user ul {
+    font-size:11px;
+    font-weight:normal !important;
+    list-style: none;
+    float: right;
+    margin:0px 4px 0px 0px;
+}
+div#user ul li {
+    height:14px;
+    float:left;
+    margin: 0px 2px;
+    font-size: 12px;
+    color: #FFF;
+}
+div#user ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+div#user ul li a:hover {
+    text-decoration: underline;
+}
+div#user ul li.user, 
+div#user ul li.account,
+div#user ul li.logout, 
+div#user ul li.chpwd {
+    padding-left: 20px;
+    padding-right: 5px;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+}
+div#user ul li.access, div#user ul li.session {
+    color: #999;
+}
+div#user ul li.user {
+    background-image: url(../img/status/user.png);
+}
+div#user ul li.account {
+    background-image: url(../img/status/account.png);
+}
+div#user ul li.logout {
+    background-image: url(../img/status/logout.png);
+}
+div#user ul li.chpwd {
+    background-image: url(../img/status/chpwd.png);
+}
+div#user ul li#department {
+    float:right;
+    width:162px;
+}
+/* End Statu Bar */
+
+/* Start Header */
+div#header {
+    background: #405B9C url(../img/header/bg.jpg) repeat-x top left;
+    border-bottom: solid 1px #35528F;
+    height: 100px;
+    width:100%;
+    min-width: 990px;
+    float:left;
+}
+div#header-container {
+    background: transparent url(../img/header/img.jpg) no-repeat top left;
+    height: 100px;
+    width:100%;
+    float:left;
+    position: relative;
+}
+div#logo {
+    width:auto;
+    float:left;
+    height:41px;
+    margin: 10px;
+}
+
+div#logo h1 {
+    font-size:22px;
+    font-family: 'Liberation Sans',FreeSans;
+    float:right;
+    color:#FFF;
+    margin: 15px 0px 0px 15px;
+    padding:0px;
+    text-align:center;
+}
+/* End Header */
+
+/* Start Search */
+div#search {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px 10px 10px 10px;
+    float: right;
+    height: 50px;
+    margin: 10px 10px 0 0;
+    width: 320px;
+}
+#search .coluna {
+    width: 100%;
+    margin-top: 9px;
+    margin-left: 10px;
+}
+#search span.opt-title {
+    float: left;
+    display: block;
+    margin-top: 8px;
+    padding-right: 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #FFF;
+}
+#search .search-string {
+    float:left;
+    width: 160px;
+    height: 33px;
+    background: transparent url(../img/search/box.gif) no-repeat top left;
+}
+#search .search-string input.type-text {
+    display: block;
+    width: 140px;
+    margin-top: 5px;
+    margin-left: 8px;
+    padding: 4px 3px;
+    border: 0 none;
+    font-family: Arial, Helvetica;
+    font-size: 12px;
+    color: #555;
+}
+#search .search-btn {}
+#search .quicksearch-combo {
+    width: 200px;
+    height: 33px;
+    background: transparent url(../img/search/bg.gif) no-repeat top left;
+}
+#search .quicksearch-combo select {
+    width: 180px;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 3px;
+    border: none;
+    font-family: Arial, Helvetica;
+    font-size: 11px;
+    color: #555;
+}
+/* End Search */
+
+/* Start Menu */
+div#navigation {
+    background: transparent url(../img/navigation/bg.png) no-repeat top left;
+    float:right;
+    width:60%;
+    min-width: 795px;
+    height: 32px;
+    margin:8px 0px 0px 0px;
+    *margin:-12px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+}
+div#navigation ul {
+    list-style: none;
+    margin:0px 0px 0px 30px;
+}
+div#navigation ul li {
+    float: left;
+    display: block;
+    margin: 0 5px;
+}
+div#navigation ul li a {
+    display: inline;
+    padding-right: 10px;
+    border-right: solid 1px #999;
+    line-height: 32px;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 14px;
+    color: #DDD;
+    text-decoration: none;
+    margin: -10px 0px 0px 0px;
+}
+div#navigation ul li a:hover {
+    text-decoration: underline;
+}
+div#navigation ul li a.last-link {
+    border: none;
+}
+ul#nav ul {
+    display: none;
+    position: absolute;
+    *margin-top: 25px;
+    right: 20px;
+    width: 172px;
+    z-index: 9999;
+    margin-left: -10px;
+}
+ul#nav li ul li {
+    background-color: #284091;
+    background-image: none;
+    border-left: medium none;
+    margin-top: 0;
+    padding: 5px 0;
+    height: 20px;
+}
+ul#nav li ul li a {
+    border-top: medium none;
+    float: left;
+    height: auto;
+    line-height: 33px;
+    padding: 0 21px;
+    text-align: left;
+    width: 128px;
+}
+/* End Menu */
+
+#content {
+    min-width: 990px;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+img.content-left-corner {
+    left: 0px;
+    position: absolute;
+    top: 0px;
+}
+img.content-right-corner {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+#content-container {
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    margin-left: 30px;
+    margin-right:30px;
+    min-height: 500px;
+    float: left;
+    *height: 100%;
+    min-width: 930px;
+    width: 95.5%;
+}
+
+#conteudo {
+    padding: 10px;
+    /*width: 98.5%;*/
+}
+#conteudo div.titulo {
+    border-bottom: dotted 1px #CCC;
+    float: left;
+    width: 100%;
+    margin: 0px 0px 5px;
+}
+#conteudo div.titulo h1 {
+    margin: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Arial;
+    font-size: 23px;
+    font-weight: normal;
+    color: #666;
+    padding: 0px 0px 5px 0px;
+}
+#conteudo div.titulo h1 img {
+    vertical-align: middle
+}
+#conteudo div.titulo p {
+    margin-bottom: 5px;
+    color: #333;
+    line-height:1.5em;
+}
+
+#backgroundConsulta {
+    background:url(../img/modulo.consultas.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    float: left;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundSolucoesAcesso {
+    background:url(../img/modulo.solucoes-acesso.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundModuloConfiguracoes {
+    background:url(../img/modulo.configuracoes.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundModuloFiber {
+    background:url(../img/modulo.fiber.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundModuloTF {
+    background:url(../img/timfixo.jpg) top left no-repeat;
+    width:685px;
+    height:690px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundSistema {
+    background:url(../img/modulo.config.sistema.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundPosVenda {
+    background:url(../img/modulo.esteira-e-pos-venda.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundImplantacao {
+    background:url(../img/modulo.implantacao-rede.jpg) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundEstoque {
+    background:url(../img/modulo.estoque.png) top left no-repeat;
+    width:800px;
+    height:500px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+#backgroundPreVendas {
+    background:url(../img/modulo.pre_vendas.png) top left no-repeat;
+    width:800px;
+    height:600px;
+    margin: 0px 0px 0px -10px;
+    padding: 0px;
+}
+
+div.objective {
+    background:url(../img/icons/Folder_Generic.png) top left no-repeat;
+    width:90%;
+    height: 95px;
+    padding: 10px 0px 0px 115px;
+    margin:0px;
+    float: left;
+}
+div.objective h4 {
+    color: #666666;
+    font-family: "Lucida Sans Unicode","Lucida Sans","Trebuchet MS",Arial,sans-serif;
+    font-size: 22px;
+}
+div.objective p {
+    color: #666666;
+    font-family: "Lucida Sans Unicode","Lucida Sans","Trebuchet MS",Arial,sans-serif;
+    font-size: 16px;
+    margin:0px 0px 0px 10px;
+}
+
+#footer {
+    background: url("../img/footer/bg.jpg") repeat-x scroll left top #FEFEFE;
+    height: 60px;
+    float:left;
+    padding: 25px 0px 0px 0px;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 990px;
+    width: 100%;
+}
+#footer #copyright {
+    text-align: center;
+    width: 98.9%;
+    display: inline;
+    float: left;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    position: relative;
+}
+#copyright h1 {
+    color: #666666;
+    font-family: "Lucida Sans Unicode","Lucida Sans","Trebuchet MS",Arial,sans-serif;
+    font-size: 2em;
+    font-weight: normal;
+    margin: 0;
+}
+#copyright p {
+    color: #333333;
+    font-size: 11px;
+    line-height: 1.5em;
+}
+div#systemInfo {
+    clear: both;
+    float: left;
+    width:100%;
+}
+
+div.dv1, div.dv2{
+    display: inline;
+    float: left;
+    width: 48%;
+    font-size: 14px;
+    color: #2E6E9E;
+    text-align: center;
+}
+div.chosen {
+    border: 1px solid #C5DBEC;
+    float: left;
+    width: 47.5%;
+    padding: 3px;
+    margin: 0px 0px 0px 0px;
+    overflow: auto;
+    height: 400px;
+}
+div.chosen h1, div.toChoose h1 {
+    font-size: 14px;
+    color: #2E6E9E;
+    padding: 3px 3px 3px 25px;
+    margin: 0px 0px 0px 0px;
+}
+div.chosen ul li {
+    padding: 5px 5px;
+    margin: 1px 0px 1px 0px;
+}
+div.toChoose {
+    border: 1px solid #C5DBEC;
+    float: left;
+    width: 48%;
+    padding: 3px;
+    margin: 0px 0px 0px 10px;
+    overflow: auto;
+    height: 400px;
+}
+div.toChoose ul li {
+    padding: 5px 5px;
+    margin: 1px 0px 1px 0px;
+}
+.connectedSortable{
+    padding-bottom: 30px;
+    background:#E3E3DF;
+}
+
+
+div.workflow {
+    width: 990px;
+    float: left;
+    margin: 10px 0px 0px 0px;
+}
+div.block {
+    width: 145px;
+    float: left;
+    height: 77px;
+    margin: 0px 0px 0px 0px;
+}
+div.block div.headBlock {
+/*    background: #4E98D5;
+    border: 1px solid #4E98D5;*/
+    text-align: center;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 20px;
+    padding: 5px 5px 0px 5px;
+}
+div.headBlock a {
+    font-size: 10px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+div.headBlock a:hover {
+    text-decoration: underline;
+}
+div.block div.bodyBlock{
+    background: none repeat scroll 0 0 #FFFFFF;
+/*    border: 3px solid #4E98D5;
+    border-top: 0 none;*/
+    padding: 2px 2px 2px 2px;
+}
+div.block div.blockFooter{
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 2px 2px 2px 2px;
+}
+div.seta {
+    background: #FFFFFF;
+    float: left;
+    margin: 30px 5px 0px 0px;
+}
+img.seta_down {
+    height: 32px; 
+    width: 10px; 
+    margin:1px 0px 0px 0px;
+}
+img.seta_right {
+    height: 32px; 
+    width: 32px; 
+    margin:1px 0px 35px 0px;
+}
+
+    .data_{width:110px;}
+    .data{width:110px;}
+    .fs_itens{background-color: #EDEDED;border: 1px solid #284091 !important;width:600px !important;}
+    .fs_itens legend{background-color: #284091;color: #FFFFFF;padding: 5px 10px;}
+    .file_remove{vertical-align: middle; padding-right: 10px}
+    #aguarde_lista{display: none}
+    .MultiFile-wrap{margin:0 !important;}
+    .MultiFile-list{margin:3px 0 0 0 !important;}
+    .MultiFile-label{
+        margin:3px 0 0 0 !important;
+        background:#FFFF99;
+        padding: 4px 0;
+        border-color: #EEEEEE #CCCCCC #CCCCCC #EEEEEE;
+        border-style: solid;
+        border-width: 1px 2px 2px 1px;
+    }

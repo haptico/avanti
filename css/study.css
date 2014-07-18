@@ -1,0 +1,114 @@
+div#study {
+    width: 1280px;
+    height:970px;
+    margin:0px;
+    padding:0px;
+}
+div#study div#project {
+    float: left;
+    width:99%;
+}
+div#study div#project table {
+    border:1px dotted #CCCCCC;
+}
+div#study div#trail {
+    float:left;
+    width:377px;
+    background-color:#E0EEFB;
+    border:1px dotted #CCCCCC;
+    margin:0px 10px 10px 0px;
+    padding:0px 5px;
+}
+div#study div#project h3, div#study div#trail h4, div#study div#access h5 {
+    color: #666666;
+    font-family: "Lucida Sans Unicode","Lucida Sans","Trebuchet MS",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    height: 25px;
+    margin: 0;
+}
+div#study div#trail div.containerTrails {
+    overflow:auto;
+    height:840px;;
+}
+fieldset.fs_trail {
+    background-color:#FFFFFF;
+    border: 1px solid #284091;
+    height: auto;
+    padding: 10px 5px 5px;
+    width: 95%;
+}
+fieldset.fs_trail legend {
+    background-color:#284091;
+    color:#FFF;
+    padding: 5px 10px 5px 10px;
+}
+div.detail_trail {
+    float: left;
+}
+div.detail_trail div.produto_trail {
+    padding: 5px 0px;
+}
+div.tab_trail {
+    width:100%;
+    float:left
+}
+div#study div#access {
+    float:left;
+    border:1px dotted #CCCCCC;
+    margin:0px 0px 0px 0px;
+    padding:5px 10px;
+}
+div#access fieldset {
+    /*background-color:#95C5DE;*/
+    border: 1px dotted #CCCCCC;
+    height: auto;
+    padding: 10px 5px 5px;
+    width: 95%;
+}
+div#study div#access div#details-02 table {
+    width: 50%;
+    float:left;
+    margin:0px 0px 5px 0px;
+}
+div#study div#access div#details-02 #table1 { background-color: #FFFFFF; width: 25%; float:left; margin:0px 0px 5px 0px; }
+div#study div#access div#details-02 #table2 { background-color: #FFFFFF; width: 75%; float:left; margin:0px 0px 5px 0px; }
+div#union {
+    float:left;
+    width: 67.9%;
+    margin:10px 0px 10px 0px;
+}
+div#union #fsAcessoProprio{
+    float:left;
+    border:1px solid #FF1A1A;
+    margin:0px 5px 5px 0px;
+    padding:5px 5px;
+    background: #fff;
+}
+
+div#union #legendAcessoProprio {
+    background-color:#F00;
+    color:#FFF;
+    border:1px dotted #FF1A1A;
+}
+div#union  #fsAcessoAlugado {
+    background: #fff;
+    float:left;
+    border:1px solid #00F;
+    margin:0px 0px 0px 0px;
+    padding:0px 5px;
+}
+div#union #legendAcessoAlugado {
+    background-color:#00F;
+    color:#FFF;
+    border:1px dotted #0000FF;
+}
+div#union fieldset.own_access table tbody tr td, div#union fieldset.access_rented table tbody tr td {
+    border: 1px dotted #CCCCCC !important;
+    margin:0px 0px 0px 0px;
+    padding:3px;
+}
+
+.fs_trail_cancelado_detalhe{ color:#AF312B; font-weight:bold; padding:0 0 0 14px;  }
+
+.fs_trail_arquivado_detalhe{ color:#000000; font-weight:bold; padding:0 0 0 14px;  }

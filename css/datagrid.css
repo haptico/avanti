@@ -1,0 +1,428 @@
+/* DataGrid */
+table.datagrid {}
+table.datagrid caption {
+    padding: 5px 0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    color: #666;
+    text-align: left;
+}
+table.datagrid td, table.datagrid th {
+    padding: 5px;
+    margin: 1px;
+    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+}
+table.datagrid thead th, table.datagrid tfoot th  {
+    border-right: solid 1px #8F9DBF;
+    border-bottom: solid 1px #516391;
+    color: #FFF;
+    background: #6A7DAC url(../img/datagrid.th-bg.jpg) repeat-x top left;
+}
+table.datagrid tbody th {
+    border-bottom: solid 1px #8F9DBF;
+    color: #232C3F;
+    background: #9FAFD5 url(../img/datagrid.th-light-bg.jpg) repeat-x top left;
+}
+table.datagrid tbody tr {
+    border-bottom: solid 1px #CCC;
+}
+table.datagrid tbody tr.par {
+    background-color: #EAEAEA;
+}
+
+/* tables tableList */
+table.tableList {
+    margin:0px 0px 5px 0px;
+    width: 100%;
+}
+table.tableList thead tr th.destaque {
+    font-size:20px;
+}
+table.tableList thead tr th, table.tableList tfoot tr th {
+    background-color: #284091;
+    border: 1px solid #CDCDCD;
+    color:#E0EEEE;
+    font-size: 12px;
+    padding: 10px 5px;
+    text-align:center;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+table.tableList thead tr th.th {
+    text-align: left;
+    width: 230px;
+}
+table.tableList thead tr th a, table.tableList tfoot tr th a {
+    color:#FFFFFF;
+    font-size: 16px;
+    text-align: left;
+    text-decoration:none;
+}
+table.tableList thead tr th a img {
+    /*    float: left;*/
+}
+table.tableList thead tr th a:hover, table.tableList tfoot tr th a:hover {
+    text-decoration:underline;
+}
+table.tableList thead tr td, table.tableList tfoot tr td {
+    background-color: #F2F2F2;
+    border: 1px solid #CDCDCD;
+    font-family: Calibri;
+    font-size: 12px;
+    font-weight:bold;
+    padding: 4px;
+    text-align:center;
+}
+table.tableList tbody td {
+    font-family:arial;
+    font-size: 11px;
+    color: #3D3D3D;
+    border: 1px solid #CDCDCD;
+    padding: 4px 4px 8px 4px;
+    /*    white-space: nowrap;*/
+}
+table.tableList tbody td img {
+    float: none;
+}
+table.tableList tbody th {
+    background-color: #E6EEEE;
+    font-family:arial;
+    font-size: 11px;
+    border: 1px solid #CDCDCD;
+    padding: 4px;
+    text-align:center;
+    white-space: nowrap;
+}
+table.tableList tbody td a:hover, table.tableList tbody th a:hover {
+    color:#8496C9;
+    text-decoration:underline;
+}
+table.tableList tbody td a, table.tableList tbody th a {
+    color:#00F;
+    text-decoration:none;
+}
+table.tableList tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+
+table.tableList tbody td table tbody tr td, table.tableList thead td table tbody tr td {
+    font-family:arial;
+    font-size: 11px;
+    padding: 3px 5px;
+    margin: 5px 0px 5px 0px;
+    margin:0px;
+    color:#555
+}
+table.tableList tbody td table tbody tr td b, table.tableList thead td table tbody tr td b {
+    padding: 0px;
+    margin:0px 0px 0px 10px;
+}
+table.tableList tbody td table tbody tr td a, table.tableList thead td table tbody tr td a {
+    display: block;
+    text-decoration:none;
+}
+table.tableList tbody td table tbody tr td a img, table.tableList thead td table tbody tr td a img {
+    border: 0px none;
+    padding: 0px;
+    margin:0px 5px -7px 5px;
+}
+table.tableList tbody td table tbody tr td b a img, table.tableList thead td table tbody tr td b a img {
+    border: 0px none;
+    padding: 0px;
+    margin:0px 5px -7px 5px;
+}
+
+
+/* tableSorter */
+table.tablesorter {
+    font-family:arial;
+    background-color: #CDCDCD;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 1px;
+    /*    border: 1px solid #CDCDCD;*/
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    color: #000;
+    padding: 4px;
+}
+table.tablesorter tbody th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    color: #000;
+    padding: 4px;
+}
+table.tablesorter thead tr td, table.tablesorter tfoot tr td {
+    background-color: #FFFFFF;
+    font-family: Calibri;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
+}
+table.tablesorter thead tr .header {
+    background-image:url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    padding: 4px 21px 4px 4px;
+}
+table.tablesorter tbody tr {
+    background-color: #FFF;
+}
+table.tablesorter tbody td {
+    font-family: arial;
+    font-size: 8pt;
+    color: #3D3D3D;
+    padding: 4px;
+    vertical-align: top;
+    border: 0 none;
+    /*    white-space: nowrap;*/
+}
+table.tablesorter tbody td a {
+        text-decoration: none;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+    background-image:url(../img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+    background-image:url(../img/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+
+div.tablesorterPager {
+    background-color:#D6D2C2;
+    padding:10px 0;
+    text-align:center;
+}
+div.tablesorterPager span {
+    padding:0 5px;
+}
+div.tablesorterPager input.prev {
+    margin-right:10px;
+    width:auto;
+}
+div.tablesorterPager input.next {
+    margin-left:10px;
+    width:auto;
+}
+div.tablesorterPager input {
+    border:1px solid #330000;
+    text-align:center;
+    width:50px;
+}
+.pager {
+    text-align:center;
+    width:100%;
+}
+.pagedisplay {
+    border:medium none;
+    font-size:12px;
+    height:auto;
+    overflow:hidden;
+    text-align:center;
+    width:30px;
+}
+.disab {
+    border:medium none;
+    color:gray;
+    cursor:not-allowed;
+    font-size:11px;
+    font-weight:bold;
+    margin:0 0 0 10px;
+    text-align:center;
+    text-decoration:none;
+}
+.first, .prev, .next, .last {
+    color:#545454;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+    margin:0 0 0 10px;
+    text-decoration:none;
+}
+.exibePag {
+    clear:both;
+    font-size:12px;
+    overflow:hidden;
+    padding:10px 10px 10px 0;
+    text-align:center;
+}
+.exibePag2 {
+    font-size:12px;
+    overflow:hidden;
+    padding:10px 0;
+}
+.pagesize {
+    background:none repeat scroll 0 0 #EDEEF0;
+    border:1px solid #9F9D9E;
+    color:#22314E;
+    font-size:12px;
+    width:50px;
+}
+#paginacao {
+    text-align:center;
+}
+
+table.tablesorter tbody td a{text-decoration:none;}
+
+/* pls - tablesorter2 para outro estilo */
+/* tables */
+table.tablesorter2 {
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+    border: 2px solid #CDCDCD;
+}
+table.tablesorter2 thead tr th, table.tablesorter2 tfoot tr th {
+    background-color: #9AFF9A;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 4px;
+}
+table.tablesorter2 tbody th {
+    background-color: #9AFF9A;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 4px;
+}
+table.tablesorter2 thead tr td, table.tablesorter2 tfoot tr td {
+    background-color: #FFFFFF;
+    border: 1px solid #CDCDCD;
+    font-family: Calibri;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
+}
+table.tablesorter2 thead tr .header {
+    background-image:url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter2 tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+    border: 1px solid #CDCDCD;
+}
+table.tablesorter2 tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+table.tablesorter2 thead tr .headerSortUp {
+    background-image:url(../img/asc.gif);
+}
+table.tablesorter2 thead tr .headerSortDown {
+    background-image:url(../img/desc.gif);
+}
+table.tablesorter2 thead tr .headerSortDown, table.tablesorter2 thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+
+/* Atividade GL */
+.yellow {background-color:#FFFF97 !important;}
+.yellow td {color:#008B00 !important;}
+.yellow td a {color:#008B00 !important;}
+.red {background-color:#FF5959 !important;}
+.red td {color:#FFFFFF !important;}
+.red td a {color:#FFFFFF !important;}
+
+/*Estilos a serem aplicados ao painel dashboard*/
+div#reportsInfo {
+    float: left;
+    width: 100%;
+    border-bottom: 1px dotted #CCCCCC;
+    margin: 0px 0px 10px 0px;
+}
+div#reportsInfo h3 {
+    font-size: 21px;
+    color: #4F95DD;
+    margin: 0px;
+}
+div#reportsInfo ul li {
+    font-size: 17px !important;
+    color: black;
+    margin: 0px;
+}
+div#reportsInfo ul li p {
+    font-size: 17px !important;
+}
+div#dashboard {
+    width: 100%;
+}
+div#dashboard table {
+    float: left;
+    width: 49%;
+    margin: 0px 5px;
+}
+
+
+table.dashboard {width: 100%; margin: 5px 0px;}
+/*table.dashboard thead tr th, table.dashboard thead tr td {
+    border: 1px solid black; background-color: #4F95DD; color: white; padding: 5px;
+}*/
+table.dashboard thead tr th {
+    border: 1px solid black; background-color: #4F95DD; color: white; padding: 5px;
+}
+table.dashboard thead tr td {
+    border: 1px solid black; background-color: #FFFFFF; color: #000000; padding: 5px; font-style: italic;
+}
+table.dashboard thead tr th span.nota {color: white; font-style: italic}
+/*table.dashboard thead tr td {color: black}*/
+table.dashboard thead tr td h3 {background-color: white; color: #4F95DD}
+
+table.dashboard tbody tr th, table.dashboard tbody tr td {
+    padding: 5px;
+    color: black !important;
+    border: 1px solid #CCCCCC;
+}
+table.dashboard tbody tr td.noborder {background-color: white; color: black !important; padding-left: 5px; padding-right: 5px; border: none}
+table.dashboard tbody tr td a.ablue {color: blue !important; text-decoration: none;}
+table.dashboard tbody tr td a.ared {color: red !important; text-decoration: none;}
+table.dashboard tbody tr td span.ablue {color: blue !important}
+table.dashboard tbody tr td span.ared {color: red !important}
+table.dashboard tbody tr td input[type="button"], 
+table.dashboard tbody tr td input[type="reset"], 
+table.dashboard tbody tr td input[type="submit"] {
+    background-color: #808080; 
+    color: white; 
+    font-weight: bolder; 
+    font-size: larger; 
+    border: 0 none; 
+    width: 200px; 
+    height: 30px;
+    margin: 0px 0px 10px 0px;
+}
+/*table.dashboard tbody tr td input[type="submit"] {background-color: #808080; color: white; font-weight: bolder; font-size: larger;display: inline; border: none; width: 150px;}*/
+table.dashboard tbody tr.dash_even {background-color: #dce6f1;}
+table.dashboard tbody tr.dash_even td {background-color: #dce6f1; color: black}
+table.dashboard tfoot tr {background-color: white;text-align: left}
+table.dashboard tfoot tr td {background-color: white;text-align: left}
+table.dashboard tfoot tr td span.nota {background-color: white;text-align: left; font-style: italic}
+table.dashboard tfoot tr th {
+    background-color: #4F95DD;
+    border: 1px solid black;
+    color: white;
+    padding: 5px;
+}
+table.dashboard select {background-color: #4F95DD; color: white;font-weight: bolder; border: none}
+
+table.dashboard tbody tr td.maisOpcoes {text-align: left;}
+table.dashboard tbody tr td.maisOpcoes select {background-color: white; color: black; font-weight: bolder; border: 1px solid black; width: 150px}
