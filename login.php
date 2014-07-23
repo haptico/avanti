@@ -1,37 +1,3 @@
-<?php
-if ($acaoSenha) {
-    if ($email != '') {
-        if ($login2 != "") {
-            $usuario = UsuarioAction::loadByEmail($email, $login2);
-            if ($usuario instanceof Usuario) {
-                //passa pro email a senha dele
-                $senha_resetada = uniqid();
-                $ret = UsuarioAction::resetarSenha($senha_resetada, $usuario->getID());
-                if (is_null($ret)) {
-                    $mail = new PHPMailer(true);
-                    $mail->SetFrom('no-reply@between-br.com.br');
-                    $mail->Subject = "[INTEGRA] Senha de acesso";
-                    $mail->Body = "Sua nova senha de acesso � " . $senha_resetada;
-                    $mail->AddAddress($email);
-                    if ($mail->Send()) {
-                        $msg = "A nova senha foi enviada para o email informado.";
-                    } else {
-                        $msg = "Ocorreu um erro no envio do email, se o problema persistir, favor contate o suporte técnico.";
-                    }
-                } else {
-                    $msg = "Não foi possível resetar a senha, se o problema persistir, favor contate o suporte técnico.";
-                }
-            } else {
-                $msg = "Usuário não encontrado ou inativo";
-            }
-        } else {
-            $msg = "Login inválido";
-        }
-    } else {
-        $msg = 'Email inválido.';
-    }
-}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -50,7 +16,18 @@ if ($acaoSenha) {
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#input_login").focus();
+                $(".slow-scrolling").click(function(){
+                    $("html, body").animate({scrollTop:$(this.hash).offset().top},700);
+                    return false;
+                });
+
+                if($('#msg').val() != ''){
+                    $('#login_erro').html($('#msg').val());
+                    $(".float-box-login .box-result-validation").show();
+                    abrirBoxLogin();
+                }
             });
+            
             $('#dialog_link, ul#icons li').hover(
                     function() {
                         $(this).addClass('ui-state-hover');
@@ -92,10 +69,9 @@ if ($acaoSenha) {
                         </div> 
                         <div class="float-box"> 
                             <div class="float-box-login"> 
-                                <div class="box-result-validation cp-box-error">
-                                    <b>Ops!</b> Verifique os dados informados!
-                                </div>
+                                <div class="box-result-validation cp-box-error" id="login_erro"></div>
                                 <form id="form_login" name="form_login" method="post">
+                                    <input id="msg" type="hidden" placeholder="Msg" maxlength="200" value="<?=$msg;?>" /> 
                                     <input id="email" type="text" placeholder="Email" maxlength="200" name="email" /> 
                                     <input id="senha" type="password" placeholder="Senha" maxlength="50" name="senha" /> 
                                 </form>
@@ -194,12 +170,4 @@ if ($acaoSenha) {
             </div> 
         </section>
     </body>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".slow-scrolling").click(function(){
-                $("html, body").animate({scrollTop:$(this.hash).offset().top},700);
-                return false;
-            });
-        });
-    </script>    
 </html>

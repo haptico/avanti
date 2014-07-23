@@ -72,6 +72,7 @@ EfetuarLoginVO.prototype.validate = function() {
         adicionarTooltip(this.senha_htmlid, "Informe sua senha antes de prosseguir!")
     }
     if (!validationResult) {
+        $('#login_erro').html('<b>Ops!</b> Verifique os dados informados!');
         $(".float-box-login .box-result-validation").show();
         $(".removeTooltip:first").focus()
     } else {

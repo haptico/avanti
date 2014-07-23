@@ -4,7 +4,7 @@ class Conexao {
 	private $conn;
 	
 	private $server = 'localhost';//DESENVOLVIMENTO
-	//private $server = '10.9.5.16';//PRODU��O
+	//private $server = '10.9.5.16';//PRODUÇÃO
 	private $db = 'avanti';
 	private $user = 'root';
 	private $pass = '';
@@ -17,14 +17,7 @@ class Conexao {
         /*
 	O construtor da classe
 	*/
-	function __construct($db){
-            global $global_servidorMysql, $global_userMysql, $global_passMysql;
-            
-            $this->server = $global_servidorMysql;
-            $this->user = $global_userMysql;
-            $this->pass = $global_passMysql;
-            
-            $this->db = $db;
+	function __construct(){
             $this->open();
 	}
 

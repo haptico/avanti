@@ -5,20 +5,22 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 include('inc/init.inc.php');
 
+$msg = '';
 $usuLogado = UsuarioAction::isLogged();
 if(!$usuLogado){
     //verifica login
     $email = '';
-    $sneha = '';
+    $senha = '';
     if (isset($_POST['email']) && isset($_POST['senha'])) {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         $usuario = UsuarioAction::doLogin($email, $senha);
-        if (is_null($usuario)) {
+        if (!($usuario)) {
             $msg = 'Usuário não encontrado';
         }
     }
-    if (is_null($usuario)) {
+    $usuLogado = UsuarioAction::isLogged();
+    if (!($usuLogado)) {
         include('login.php');
     }else{
         include('principal.php');
