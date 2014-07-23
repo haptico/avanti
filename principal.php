@@ -154,7 +154,7 @@ if ($SYS_BARRA_LATERAL_CORRENTE) {
                     if($("#li_filtros :input")){
                         $("#li_filtros :input").each(highlightFiltros);
                     }
-                    // Coloca a marcação de linha em todas as tabelas que implementam a classe Display.
+                    // Coloca a marcaï¿½ï¿½o de linha em todas as tabelas que implementam a classe Display.
                     $(".display").click( function(e) {
                         $(e.target).parent('tr').toggleClass('row_selected');
                     });
@@ -184,14 +184,14 @@ if ($SYS_BARRA_LATERAL_CORRENTE) {
                     <ul>
                         <li class="user"><?= $dadosUsuarioLogado->getNome(); ?></li>
                         <li class="account"><?= $dadosUsuarioLogado->getPerfil(); ?></li>
-                        <li class="user"><a href="#" onclick="navigation('')">Usuários Logados</a></li>
+                        <li class="user"><a href="#" onclick="navigation('')">UsuÃ¡rios Logados</a></li>
                         <li class="chpwd"><a href="#" onclick="navigation(55)">Trocar Senha</a></li>
                         <li class="logout"><a href="#" onclick="sair()">Sair</a></li>
                         <? /*if ($DESENVOLVEDOR) { ?>
                             <li id="department">
                                 <form name="ch_dep" id="ch_dep" action="" method="post">
                                     <?
-                                    $depts = array("CPTFA", "GP", "LP", "Prevendas", "Elaborador CPCOM", 'MW Planning', 'Gestão', 'Vendas', 'Fiber', 'Configuração', 'Tim Fixo');
+                                    $depts = array("CPTFA", "GP", "LP", "Prevendas", "Elaborador CPCOM", 'MW Planning', 'Gestï¿½o', 'Vendas', 'Fiber', 'Configuraï¿½ï¿½o', 'Tim Fixo');
                                     echo combo_array2('sup_departamento', $depts, $qry->data["departamento"], 1, 1);
                                     ?>
                                 </form>
@@ -203,13 +203,13 @@ if ($SYS_BARRA_LATERAL_CORRENTE) {
             <div id="header">
                 <div id="header-container">
                     <div id="logo">
-                        <a href="#" onclick="navigation('')" title="Between - Sistema Integra.">
-                            <img src="img/btw.png" alt="Between - Sistema Integra" border="0" style="float:left" />
+                        <a href="#" onclick="navigation('')" title="AVANTI">
+                            <img src="img/btw.png" alt="AVANTI" border="0" style="float:left" />
                         </a>
                         <? if ($database != 'cttoprd') { ?>
                             <h1><?= $servidor_processador; ?></h1>
                         <? } else { ?>
-                            <img src="img/cruscotto-logo.png" alt="Sistema Cruscotto" style="float: left;" />
+                            <img src="img/cruscotto-logo.png" alt="AVANTI" style="float: left;" />
                         <? } ?>
                     </div>
                     <div id="search" class="search">
@@ -266,7 +266,7 @@ if ($SYS_BARRA_LATERAL_CORRENTE) {
                                             $SYS_BARRA_LATERAL_CORRENTE = $page->getNome();
                                         }
 
-                                        // se tem '?' é pq tem querystring, entao popula um array chamado $arrParams com a key->value dos gets
+                                        // se tem '?' ï¿½ pq tem querystring, entao popula um array chamado $arrParams com a key->value dos gets
                                         if (strpos($page->getArquivo(), '?') > 0) {
                                             $arquivoInclude = substr($page->getArquivo(), 0, strpos($page->getArquivo(), '?'));
                                             $params = substr($page->getArquivo(), strpos($page->getArquivo(), '?') + 1);
@@ -290,7 +290,7 @@ if ($SYS_BARRA_LATERAL_CORRENTE) {
                                             echo '<input type="hidden" name="id_posto_wf" id="id_posto_wf" value="' . $idWfPostoTmp . '" />';
                                             require_once($arquivoIncludeCompleto);
                                         } else {
-                                            echo '<h1 class="alert">Página não encontrada</h1>';
+                                            echo '<h1 class="alert">Pï¿½gina nï¿½o encontrada</h1>';
                                         }
                                         break;
                                 }

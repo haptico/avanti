@@ -13,11 +13,16 @@ class UsuarioAction {
         $obj->setID($row["id_usuario"]);
         $obj->setIdTipoUsuario($row["id_tipo_usuario"]);
         $obj->setNome($row["nome"]);
+        $obj->setSobrenome($row["sobrenome"]);
         $obj->setEmail($row["email"]);
         $obj->setCelular($row["celular"]);
         $obj->setTelefone($row["telefone"]);
         $obj->setCPF($row["cpf"]);
         $obj->setAtivo($row["ativo"]);
+        
+        if($obj->getIdTipoUsuario() > 0){
+            //carregar tipo Usuario
+        }
         
         return $obj;
     }
@@ -67,16 +72,15 @@ class UsuarioAction {
         $db = new Conexao();
         $SQL = " 
             SELECT 
-                u.id AS id_usuario, u.nome, u.email, u.telefone, u.celular, u.ativo,
+                u.id AS id_usuario, u.nome, u.sobrenome, u.email, u.telefone, u.celular, u.ativo,
                 tu.id AS id_tipo_usuario, tu.nome AS tipo_usuario
-            FROM usuario u  
+            FROM usuario u
                 LEFT JOIN tipo_usuario tu ON tu.id = u.id_tipo_usuario
             WHERE UPPER(TRIM(u.email)) = UPPER(TRIM('".Util::escapeOracle($login)."'))
-                AND u.senha = '" . Util::escapeOracle(md5($pass)) . "' ";
+                AND u.senha = '" . Util::escapeOracle(md5($pass)) . "'";
         $arrGrupos = array();
         $rs = $db->geraMatriz($SQL);
         if ($rs && sizeof($rs) > 0) {
-            
             $obj = self::loadBean($rs[0]);
             $_SESSION['USERLOGADO'] = serialize($obj);
             return true;
@@ -104,15 +108,16 @@ class UsuarioAction {
         } else {
             $SQL = "
                 INSERT INTO usuarios ( 
-                    nome, email, telefone, celular, id_tipo_usuario,
+                    nome, sobrenome, email, telefone, celular, id_tipo_usuario,
                     senha, cpf
                 ) VALUES(
                     '" . Util::escapeOracle($objeto->getNome()) . "',
+                    '" . Util::escapeOracle($objeto->getSobrenome()) . "',
                     '" . Util::escapeOracle($objeto->getEmail()) . "',
                     '" . Util::escapeOracle($objeto->getTelefone()) . "',
                     '" . Util::escapeOracle($objeto->getCelular()) . "',
                     '" . Util::escapeOracle($objeto->getIdTipoUsuario()) . "',
-                    '" . Util::escapeOracle($objeto->getSenha()) . "',
+                    '" . Util::escapeOracle(md5($objeto->getSenha())) . "',
                     '" . Util::escapeOracle($objeto->getCPF()) . "'
                 )";
         }

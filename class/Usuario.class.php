@@ -3,25 +3,31 @@
 /**
  * Description of Usuario
  *
- * @author paulista
+ * @author Bernardo.Novak
  */
 class Usuario {
 
-    private $ID = 0; //"ID_USUARIO"
+    private $ID = 0;
     private $idTipoUsuario;
-    private $nome; //"NOME"
-    private $email; //"USUARIO"
+    private $nome;
+    private $sobrenome;
+    private $email;
+    private $senha;
     private $telefone;
     private $celular;
     private $CPF;
     private $ativo;
+    private $created;
     
+    private $tipoUsuario;
     
-    public function __construct($ID = 0, $nome = "", $email = '') {
+    public function __construct($ID = 0, $nome = "", $sobrenome = "", $email = '', $tipoUsuario = "") {
         if ($ID > 0) {
             $this->setID($ID);
             $this->setNome($nome);
+            $this->setSobrenome($sobrenome);
             $this->setEmail($email);
+            $this->setTipoUsuario($tipoUsuario);
         } else {
             $this->setID("NULL");
         }
@@ -97,6 +103,30 @@ class Usuario {
 
     public function setCPF($CPF) {
         $this->CPF = $CPF;
+    }
+    
+    public function getSobrenome() {
+        return $this->sobrenome;
+    }
+
+    public function getCreated() {
+        return $this->created;
+    }
+
+    public function getTipoUsuario() {
+        return $this->tipoUsuario;
+    }
+
+    public function setSobrenome($sobrenome) {
+        $this->sobrenome = $sobrenome;
+    }
+
+    public function setCreated($created) {
+        $this->created = $created;
+    }
+
+    public function setTipoUsuario($tipoUsuario) {
+        $this->tipoUsuario = $tipoUsuario;
     }
 }
 ?>
