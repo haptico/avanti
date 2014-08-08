@@ -80,7 +80,7 @@ class UsuarioAction {
                 AND u.senha = '" . Util::escapeOracle(md5($pass)) . "'";
         $arrGrupos = array();
         $rs = $db->geraMatriz($SQL);
-        if ($rs && sizeof($rs) > 0) {
+        if (Util::arrayTemItens($rs)) {
             $obj = self::loadBean($rs[0]);
             $_SESSION['USERLOGADO'] = serialize($obj);
             return true;

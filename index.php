@@ -5,29 +5,41 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 include('inc/init.inc.php');
 
+$idAcesso = $_POST['pagina'];
 $msg = '';
+$interna = 'login.php';
+$pastaUsuario = '';
 $usuLogado = UsuarioAction::isLogged();
 if(!$usuLogado){
     //verifica login
-    $email = '';
-    $senha = '';
     if (isset($_POST['email']) && isset($_POST['senha'])) {
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $usuario = UsuarioAction::doLogin($email, $senha);
+        $usuario = UsuarioAction::doLogin($_POST['email'], $_POST['senha']);
         if (!($usuario)) {
             $msg = 'Usuário não encontrado';
+        }else{
+            $interna = 'principal.php';
+            //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
+        }
+    }elseif($idAcesso > 0){
+        $retAcesso = AcessoAction::exibeAcesso($idAcesso);
+        if($retAcesso['EXIBE']){
+            $interna = $retAcesso['ARQUIVO'];
+        }else{
+            echo $retAcesso['MSG'];
         }
     }
-    $usuLogado = UsuarioAction::isLogged();
-    if (!($usuLogado)) {
-        include('login.php');
-    }else{
-        include('principal.php');
-    }
-    exit();
 }else{
-    include('principal.php');
+    $interna = 'principal.php';
+    //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
+    if($idAcesso > 0){
+        $retAcesso = AcessoAction::exibeAcesso($idAcesso);
+        if($retAcesso['EXIBE']){
+            $interna = $retAcesso['ARQUIVO'];
+        }else{
+            echo $retAcesso['MSG'];
+        }
+    }
 }
+include('internas/'.$pastaUsuario.$interna);
 include('inc/footer.inc.php');
 ?>
