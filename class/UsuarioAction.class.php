@@ -21,7 +21,7 @@ class UsuarioAction {
         $obj->setAtivo($row["ativo"]);
         
         if($obj->getIdTipoUsuario() > 0){
-            //carregar tipo Usuario
+            $obj->setTipoUsuario(new UsuarioTipo($row['id_tipo_usuario'], $row['tipo_usuario']));
         }
         
         return $obj;
@@ -82,7 +82,9 @@ class UsuarioAction {
         $rs = $db->geraMatriz($SQL);
         if (Util::arrayTemItens($rs)) {
             $obj = self::loadBean($rs[0]);
-            $_SESSION['USERLOGADO'] = serialize($obj);
+            $_SESSION['IDPERFILUSERLOGADO_AVANTI'] = $obj->getIdTipoUsuario();
+            $_SESSION['PERFILUSERLOGADO_AVANTI'] = ($obj->getTipoUsuario() instanceof UsuarioTipo)?strtolower($obj->getTipoUsuario()->getNome()):'';
+            $_SESSION['USERLOGADO_AVANTI'] = serialize($obj);
             return true;
         } else {
             return false;

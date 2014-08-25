@@ -14,7 +14,6 @@ class UsuarioTipo {
         $this->setID($ID);
         $this->setNome($nome);
     }
-
     
     public function getID() {
         return $this->ID;

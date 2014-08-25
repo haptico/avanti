@@ -35,4 +35,21 @@ class AcessoAction {
         return $ret;
     }
     
+    public static function exibeMenu(){
+        $strMenu = '';
+        $db = new Conexao();
+        $SQL = "
+            SELECT id AS id_acesso, nome
+            FROM acesso
+            WHERE visivel = 'S'
+                AND id_tipo_usuario = ".$_SESSION['IDPERFILUSERLOGADO_AVANTI'];
+        $rs = $db->geraMatriz($SQL);
+        if(Util::arrayTemItens($rs)){
+            foreach ($rs as $row) {
+                $strMenu .= '<ul><li><a href="javascript: void(0);" onclick="navega('.$row['id_acesso'].')" >'.$row['nome'].'</a></li></ul>';
+            }
+        }
+        return $strMenu;
+    }
+    
 }
