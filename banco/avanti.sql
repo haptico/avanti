@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2014-08-25 17:25:54
+Date: 2014-08-25 17:33:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `acesso`
+-- ----------------------------
+DROP TABLE IF EXISTS `acesso`;
+CREATE TABLE `acesso` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `arquivo` varchar(150) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `visivel` enum('N','S') NOT NULL DEFAULT 'S',
+  `id_tipo_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of acesso
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `avulso`
