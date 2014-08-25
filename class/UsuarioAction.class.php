@@ -82,6 +82,8 @@ class UsuarioAction {
         $rs = $db->geraMatriz($SQL);
         if (Util::arrayTemItens($rs)) {
             $obj = self::loadBean($rs[0]);
+            $now = time("d/m/Y G:i:s");
+            $_SESSION["lastAccess_AVANTI"] = $now;
             $_SESSION['IDPERFILUSERLOGADO_AVANTI'] = $obj->getIdTipoUsuario();
             $_SESSION['PERFILUSERLOGADO_AVANTI'] = ($obj->getTipoUsuario() instanceof UsuarioTipo)?strtolower($obj->getTipoUsuario()->getNome()):'';
             $_SESSION['USERLOGADO_AVANTI'] = serialize($obj);
@@ -127,11 +129,11 @@ class UsuarioAction {
     }
 
     public static function isLogged() {
-        $lastAccess = $_SESSION["lastAccess"];
+        $lastAccess = $_SESSION["lastAccess_AVANTI"];
         $now = time("d/m/Y G:i:s");
         $tempoTranscorrido = ($now - $lastAccess);
-        if (isset($_SESSION["lastAccess"]) && ($tempoTranscorrido <= 300) && (unserialize($_SESSION['usuarioLogado']) instanceof Usuario)) {
-            $_SESSION["lastAccess"] = $now;
+        if (isset($_SESSION["lastAccess_AVANTI"]) && ($tempoTranscorrido <= 300) && (unserialize($_SESSION['USERLOGADO_AVANTI']) instanceof Usuario)) {
+            $_SESSION["lastAccess_AVANTI"] = $now;
             return true;
         } else {
             return false;
