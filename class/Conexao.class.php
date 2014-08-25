@@ -23,12 +23,12 @@ class Conexao {
 
 	function open(){
             //$this->conn = mysql_connect($this->server,$this->user,$this->pass);
-            $strCnx = "mysql:host={$this->server}; dbname={$this->db}";
+            $strCnx = "mysql:host={$this->server}; dbname={$this->db};charset=utf8";
             //echo "$strCnx - {$this->user} - {$this->pass}";
 
 
             //$this->conn = new PDO($strCnx+" user={$this->user} password={$this->pass}");
-            $this->conn = new PDO($strCnx, $this->user, $this->pass);
+            $this->conn = new PDO($strCnx, $this->user, $this->passarray, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 //            if($this->conn){
 //                mysql_select_db($this->db,$this->conn) or die(mysql_error());
 //            }

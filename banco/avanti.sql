@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2014-08-25 17:33:43
+Date: 2014-08-25 18:33:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,13 @@ CREATE TABLE `acesso` (
   `visivel` enum('N','S') NOT NULL DEFAULT 'S',
   `id_tipo_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of acesso
 -- ----------------------------
+INSERT INTO `acesso` VALUES ('1', 'internas/motorista/veiculo/lista.php', 'Veículos', 'S', '1');
+INSERT INTO `acesso` VALUES ('2', 'internas/motorista/veiculo/cadastro.php', 'Veículos', 'N', '1');
 
 -- ----------------------------
 -- Table structure for `avulso`
@@ -48973,7 +48975,7 @@ CREATE TABLE `ponto` (
 DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE `tipo_usuario` (
   `id` int(11) NOT NULL,
-  `descricao` varchar(32) NOT NULL,
+  `nome` varchar(32) NOT NULL,
   `ativo` enum('N','S') NOT NULL DEFAULT 'S',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -49093,11 +49095,13 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `uk_cpf` (`cpf`) USING BTREE,
   KEY `fk_usuario_tipo_usuario` (`id_tipo_usuario`),
   CONSTRAINT `fk_usuario_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
+INSERT INTO `usuario` VALUES ('1', 'a@a.com', 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', '123.456.789-21', '999999999', '999999999', '1', 'S', '2014-08-25 17:57:24');
+INSERT INTO `usuario` VALUES ('2', 'b@b.com', 'b', 'b', '92eb5ffee6ae2fec3ad71c777531578f', '987.654.321-21', '888888888', '888888888', '2', 'S', '2014-08-25 18:22:08');
 
 -- ----------------------------
 -- Table structure for `veiculo`
