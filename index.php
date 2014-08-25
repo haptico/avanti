@@ -18,6 +18,7 @@ if(!$usuLogado){
             $msg = 'Usuário não encontrado';
         }else{
             $interna = 'principal.php';
+            $pastaUsuario = $_SESSION['PERFILUSERLOGADO_AVANTI'].'/';
             //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
         }
     }elseif($idAcesso > 0){
@@ -30,7 +31,7 @@ if(!$usuLogado){
     }
 }else{
     $interna = 'principal.php';
-    //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
+    $pastaUsuario = $_SESSION['PERFILUSERLOGADO_AVANTI'].'/';
     if($idAcesso > 0){
         $retAcesso = AcessoAction::exibeAcesso($idAcesso);
         if($retAcesso['EXIBE']){
@@ -39,6 +40,10 @@ if(!$usuLogado){
             echo $retAcesso['MSG'];
         }
     }
+}
+if($pastaUsuario!=''){
+    include('internas/'.$pastaUsuario.'/inc/header.inc.php');
+    include('internas/'.$pastaUsuario.'/inc/body.inc.php');
 }
 include('internas/'.$pastaUsuario.$interna);
 include('inc/footer.inc.php');
