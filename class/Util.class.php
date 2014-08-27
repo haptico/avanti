@@ -489,7 +489,7 @@ EOT;
     }
 
     public static function imageRequired() {
-        return '<img src="img/icons/required.gif" alt="Campo Obrigat�rio" />';
+        return '<img src="img/required.gif" alt="Campo Obrigatório" />';
     }
 
     

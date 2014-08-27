@@ -9,14 +9,15 @@
     <link type="text/css" rel="stylesheet" href="css/jquery.tablesorter.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery.tablesorter.pager.css" />
     
+    <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
     <script type="text/javascript">
-        function navega(idAcesso, target, acao){
+        function navega(target, acao, ID){
+            $('#ID').val(ID);
             $('#acao').val(acao);
             $('#target').val(target);
-            $('#id_acesso').val(idAcesso);
             $('#form').submit();
         }
         function navegaMenu(idAcesso){
