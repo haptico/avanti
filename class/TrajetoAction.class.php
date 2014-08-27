@@ -1,9 +1,6 @@
 <?php
 
-/**
- * @author paulista
- */
-class UsuarioAction {
+class TrajetoAction {
     
     public static function loadBean($row) {
         $obj= new Trajeto();
@@ -148,15 +145,23 @@ EOT;
     public static function getDataCadastro($ID) {
         if ($ID > 0) {
             $obj = self::load($ID);
+            $idBairroOrigem = $obj->getIdBairroOrigem();
+            $idCidadeOrigem = Bairro::getCidade($obj->getIdBairroOrigem());
+            $ifUfOrigem = Bairro::getCidade($obj->getIdBairroOrigem());
             $data['ID'] = $obj->getID();
             $data['descricao'] = $obj->getDescricao();
             $data['id_veiculo'] = $obj->getIdVeiculo();
-            $data['id_bairro_origem'] = $obj->getIdBairroOrigem();
+            $data['id_bairro_origem'] = 
             $data['id_bairro_destino'] = $obj->getIdBairroDestino();
             $data['hora_inicio'] = $obj->getHoraInicio();
             $data['hora_fim'] = $obj->getHoraFim();
             $data['preco_mensalista'] = $obj->getPrecoMensalista();
             $data['preco_avulso'] = $obj->getPrecoAvulso();
+            $data['combo_veiculo'] = VeiculoAction::getCombobox($obj->getIdVeiculo());
+            $data['combo_bairro_origem'] = Bairro::getCombobox($obj->getIdBairroOrigem(), );
+            $data['combo_bairro_destino'] = UFAction::getCombobox();
+            $data['combo_uf_origem'] = UFAction::getCombobox();
+            $data['combo_uf_destino'] = UFAction::getCombobox();
         } else {
             $data['ID'] = 0;
         }
