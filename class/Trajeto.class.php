@@ -19,8 +19,8 @@ class Trajeto {
     private $created;
     
     private $veiculo;
-    private $barrioOrigem;
-    private $barrioDestino;
+    private $bairroOrigem;
+    private $bairroDestino;
     
     public function getID() {
         return $this->ID;
@@ -114,23 +114,23 @@ class Trajeto {
         return $this->veiculo;
     }
 
-    public function getBarrioOrigem() {
-        return $this->barrioOrigem;
+    public function getBairroOrigem() {
+        return $this->bairroOrigem;
     }
 
-    public function getBarrioDestino() {
-        return $this->barrioDestino;
+    public function getBairroDestino() {
+        return $this->bairroDestino;
     }
 
     public function setVeiculo($veiculo) {
         $this->veiculo = $veiculo;
     }
 
-    public function setBarrioOrigem($barrioOrigem) {
-        $this->barrioOrigem = $barrioOrigem;
+    public function setBairroOrigem($bairroOrigem) {
+        $this->bairroOrigem = $bairroOrigem;
     }
 
-    public function setBarrioDestino($barrioDestino) {
-        $this->barrioDestino = $barrioDestino;
+    public function setBairroDestino($bairroDestino) {
+        $this->bairroDestino = $bairroDestino;
     }
 }
