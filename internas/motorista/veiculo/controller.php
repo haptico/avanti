@@ -7,8 +7,8 @@ $msg = '';
 
 //============ACOES============================
 if($acao == 'GRAVAR'){
-    $obj = TrajetoAction::loadBean($_POST);
-    if(is_null(TrajetoAction::gravar($obj))){
+    $obj = VeiculoAction::loadBean($_POST);
+    if(is_null(VeiculoAction::gravar($obj))){
         $msg = 'Registro salvo com sucesso';
     }else{
         $msg = 'Erro ao gravar trajeto';
@@ -20,9 +20,9 @@ if($acao == 'GRAVAR'){
 //============CARREGA A VIEW============================
 $target = (in_array($target, $arrTarget))?$target:'lista';
 if($target == 'cadastro'){
-    //$data = TrajetoAction::getDataCadastro($ID);
+    $data = VeiculoAction::getDataCadastro($ID);
 }elseif($target == 'lista'){
-    //$data = TrajetoAction::getDataLista($_POST);
+    //$data = VeiculoAction::getDataLista($_POST);
 }
 
 //========TRATA O TARGET E O DIRECIONAMENTO

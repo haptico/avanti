@@ -21,13 +21,6 @@ if(!$usuLogado){
             $pastaUsuario = $_SESSION['PERFILUSERLOGADO_AVANTI'].'/';
             //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
         }
-    }elseif($idAcesso > 0){
-        $retAcesso = AcessoAction::exibeAcesso($idAcesso);
-        if($retAcesso['EXIBE']){
-            $interna = $retAcesso['ARQUIVO'];
-        }else{
-            echo $retAcesso['MSG'];
-        }
     }
 }else{
     $interna = 'principal.php';

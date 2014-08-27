@@ -16,7 +16,7 @@ class Veiculo {
     private $created;
     
     private $usuario;
-    private $tipoVeiculo;
+    private $veiculoTipo;
     
     function __construct($ID = 0, $descricao = "", $placa = '', $vagas = '', $tipoVeiculo = '') {
         $this->setID($ID);
@@ -63,8 +63,8 @@ class Veiculo {
         return $this->usuario;
     }
 
-    public function getTipoVeiculo() {
-        return $this->tipoVeiculo;
+    public function getVeiculoTipo() {
+        return $this->veiculoTipo;
     }
 
     public function setID($ID) {
@@ -103,7 +103,7 @@ class Veiculo {
         $this->usuario = $usuario;
     }
 
-    public function setTipoVeiculo($tipoVeiculo) {
-        $this->tipoVeiculo = $tipoVeiculo;
+    public function setVeiculoTipo($veiculoTipo) {
+        $this->veiculoTipo = $veiculoTipo;
     }
 }

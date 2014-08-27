@@ -1,3 +1,4 @@
+
 <div class="interno">
     <h2>CADASTRO</h2>
     <div id="alertSucesso" style="display:none" class="alert_sucesso" >Evento cadastrado com sucesso.</div>
@@ -5,25 +6,19 @@
     <hr />
     <div class="form_div">
         
-        <label for="titulo">Título</label>
-        <input type="text" name="titulo" id="titulo" value="<?=$titulo;?>" />
-
-        <label for="texto">Descrição</label>
-        <textarea name="texto" id="texto" ><?=$texto?></textarea>
-
-        <label for="link">Data Início</label>
-        <input type="text" name="data_inicio" id="data_inicio" value="<?=$dataInicio;?>" class="data" maxlength="10" />
-        <img src="../img/calendar.gif" alt="Calendário" class="img_clicavel" />
-
-        <label for="link">Data Final</label>
-        <input type="text" name="data_fim" id="data_fim" value="<?=$dataFim;?>" class="data" maxlength="10" />
-        <img src="../img/calendar.gif" alt="Calendário" class="img_clicavel" />
-
-        <label for="ativo">Ativo</label>
-        <select name="ativo" id="ativo">
-            <option value="S">SIM</option>
-            <option value="N">NÃO</option>
+        <label for="id_tipo_veiculo">Tipo do Veículo</label>
+        <select name="id_tipo_veiculo" id="id_tipo_veiculo">
+            <?=$data['comboTipoVeiculo'];?>
         </select>
+        
+        <label for="placa">Placa</label>
+        <input type="text" name="placa" id="placa" value="<?=$data['placa'];?>" />
+        
+        <label for="vagas">Quantidade de vagas</label>
+        <input type="text" name="vagas" id="vagas" value="<?=$data['vagas'];?>" />
+
+        <label for="descricao_veiculo">Descrição</label>
+        <textarea name="descricao_veiculo" id="descricao_veiculo" ><?=$data['descricao_veiculo']?></textarea>
 
         <div class="quebraLinha"></div>
        <input type="reset" value="Limpar" id="btnLimpar" /> 

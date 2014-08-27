@@ -51,7 +51,7 @@ class Util {
         $strRetorno = $string;
         if(strlen($strRetorno) > $tamanhoMaximo){
             $strRetorno = substr($strRetorno, 0,($tamanhoMaximo - strlen($substitui)));
-            // se tem um espaco em branco depois de 2/3 da string, termina a string nesse espaço, senao continua com o tamanho maximo
+            // se tem um espaco em branco depois de 2/3 da string, termina a string nesse espaï¿½o, senao continua com o tamanho maximo
             if(intval(strrpos($strRetorno, ' ')) >= (floor(strlen($strRetorno)/3)*2)){
                 $strRetorno = substr($strRetorno, 0, strrpos($strRetorno, ' '));
             }
@@ -131,7 +131,7 @@ class Util {
     //trata o nome do arquivo, removendo caracteres invalidos
     public static function normalizaString($str) {
         $str = strtolower($str);
-        $a = array('/[âãàáä]/' => 'a', '/[êèéë]/' => 'e', '/[îíìï]/' => 'i', '/[ôõòóö]/' => 'o', '/[ûúùü]/' => 'u', '/ç/' => 'c', '/ñ/' => 'n');
+        $a = array('/[ï¿½ï¿½ï¿½ï¿½ï¿½]/' => 'a', '/[ï¿½ï¿½ï¿½ï¿½]/' => 'e', '/[ï¿½ï¿½ï¿½ï¿½]/' => 'i', '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/' => 'o', '/[ï¿½ï¿½ï¿½ï¿½]/' => 'u', '/ï¿½/' => 'c', '/ï¿½/' => 'n');
         $str = preg_replace(array_keys($a), array_values($a), $str);
         $str = preg_replace("/[^a-zA-Z0-9_ ]/", "", $str);
         //$str = ereg_replace("[^a-zA-Z0-9_ ]", "", $str);
@@ -142,12 +142,12 @@ class Util {
         //$str = urlencode($str);
         return $str;
     }
-    //retorna um hash unico para o arquivo, se vier o parametro, concatena o hash ao nome do arquivo, senao da um nome padrao file'. Atenção: SEM EXTENSAO do arquivo!
+    //retorna um hash unico para o arquivo, se vier o parametro, concatena o hash ao nome do arquivo, senao da um nome padrao file'. Atenï¿½ï¿½o: SEM EXTENSAO do arquivo!
     public static function geraNomeUnicoParaArquivo($nomeArquivo=''){
         return self::normalizaString(substr((($nomeArquivo!='')?$nomeArquivo:'file'), 0, 30)) . "_" .date('ymdHis').substr(microtime(), 2, 6);
     }
 
-    //diferença absoluta entre duas datas yyyy-mm-dd
+    //diferenï¿½a absoluta entre duas datas yyyy-mm-dd
     public static function numDiasEntreDatas($dataMenor, $dataMaior) {
         return abs(floor((strtotime($dataMaior) - strtotime($dataMenor)) / (24 * 60 * 60)));
     }
@@ -239,7 +239,7 @@ EOT;
         return $output;
     }
     
-    public static function getCombobox($campo, $id, $tabela, $selected = '', $filtros = '', $isFiltro = TRUE) {
+    public static function getCombobox($campo, $id, $tabela, $selected = '', $filtros = '', $isFiltro = FALSE) {
         $db = new Conexao();
         $SQL = "
             SELECT $campo as nome, $id as id
@@ -279,12 +279,12 @@ EOT;
     }
 
     public static function validaTokenForm() {
-        //valida se o token informado é valido 
+        //valida se o token informado ï¿½ valido 
         return (isset($_SESSION['token_form']) && $_SESSION['token_form'] != '' && isset($_POST['token_form']) && $_POST['token_form'] != '' && ($_SESSION['token_form'] == $_POST['token_form']));
     }
     
     public static function validaMoeda($str) {
-        //valida se $str é moeda 9.999,99
+        //valida se $str ï¿½ moeda 9.999,99
         return  preg_match('/^([0-9]\d{0,2}(\.\d{3})*|([0-9]\d*))(\,\d{1,2})?$/', trim($str));
     }
 
@@ -292,14 +292,14 @@ EOT;
         global $SYS_GIF_CORRENTE, $SYS_BARRA_LATERAL_CORRENTE,$opt,$msg;
         $objNavigation = NavigationAction::Load($idBarraLateral);
         if (is_a($objNavigation, 'Navigation')) {
-            //valida se o token informado é valido 
+            //valida se o token informado ï¿½ valido 
             $SYS_GIF_CORRENTE = Util::images($objNavigation->getGif());
             $SYS_BARRA_LATERAL_CORRENTE = $objNavigation->getNome();
             $opt = $idBarraLateral;
             if (is_file($objNavigation->getArquivo())) {
                 include $objNavigation->getArquivo();
             } else {
-                echo '<h1 class="alert">Página não encontrada</h1>';
+                echo '<h1 class="alert">Pï¿½gina nï¿½o encontrada</h1>';
             }
             require_once("rodape_geral.inc.php");
             exit();
@@ -307,8 +307,8 @@ EOT;
     }
     
     
-    /*  Função para extrair os dados de um arquivo csv
-     *  a variável start indica a partir de qual linha começa a varredura
+    /*  Funï¿½ï¿½o para extrair os dados de um arquivo csv
+     *  a variï¿½vel start indica a partir de qual linha comeï¿½a a varredura
      * 
      */
     
@@ -489,7 +489,7 @@ EOT;
     }
 
     public static function imageRequired() {
-        return '<img src="img/icons/required.gif" alt="Campo Obrigatório" />';
+        return '<img src="img/icons/required.gif" alt="Campo Obrigatï¿½rio" />';
     }
 
     
@@ -500,7 +500,7 @@ EOT;
      * @param type $showFields
      * @param type $colunaAcao
      * 
-     * Monta as colunas selecionadas pelos usuário 
+     * Monta as colunas selecionadas pelos usuï¿½rio 
      */
     
     public static function montaColuna($opt, $showFields, $colunaAcao=""){
@@ -579,7 +579,7 @@ EOT;
         
     }   
 
-    //retorna true or false para dizer se é um array e tem itens nele
+    //retorna true or false para dizer se ï¿½ um array e tem itens nele
     public static function arrayTemItens($array){
         return (is_array($array)&& count($array)>0);
     }
@@ -598,7 +598,7 @@ EOT;
 
     public static function getArraySimNao(){
         $arr['S'] = 'SIM';
-        $arr['N'] = 'NÃO';
+        $arr['N'] = 'Nï¿½O';
         return $arr;
     }
     

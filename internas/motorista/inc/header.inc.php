@@ -20,6 +20,7 @@
             $('#form').submit();
         }
         function navegaMenu(idAcesso){
+            $('#ID').val('');
             $('#acao').val('');
             $('#target').val('');
             $('#id_acesso').val(idAcesso);
