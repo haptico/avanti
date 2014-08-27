@@ -15,7 +15,7 @@ class Bairro {
         $cidade = new Cidade();
         $SQL = "select b.id_cidade, c.nome 
                 from bairro b
-                    inner join cidade c on c.id = b.id_cidade";
+                    inner join cidade c on c.id = b.id_cidade and b.id = $id";
         $rs = $db->geraMatriz($SQL);
         if (Util::arrayTemItens($rs)){
             $cidade->setID($rs[0]["id_cidade"]);

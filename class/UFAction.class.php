@@ -7,7 +7,7 @@
 
 class UFAction {
     public static function getCombobox($IDSelected = ""){
-        $strCombobox = Util::getCombobox('nome', 'id', 'cidade', $IDSelected);
+        $strCombobox = Util::getCombobox('sigla', 'id', 'uf', $IDSelected);
         return $strCombobox;
     }
 }

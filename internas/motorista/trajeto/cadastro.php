@@ -13,22 +13,22 @@
         <select id="id_veiculo" name="id_veiculo" ><?= $data['combo_veiculo'] ?></select>
 
         <label for="id_uf_origem">Estado <?= Util::imageRequired() ?></label>
-        <?= $data['combo_uf_origem'] ?>
+        <select id="id_uf_origem" name="id_uf_origem" ><?= $data['combo_uf_origem'] ?></select>
 
         <label for="id_cidade_origem">Cidade <?= Util::imageRequired() ?></label>
-        <select id="id_cidade_origem" name="id_cidade_origem" ></select>
+        <select id="id_cidade_origem" name="id_cidade_origem" ><?= $data['combo_cidade_origem'] ?></select>
 
         <label for="id_bairro_origem">Bairro <?= Util::imageRequired() ?></label>
-        <select id="id_bairro_origem" name="id_bairro_origem" ></select>
+        <select id="id_bairro_origem" name="id_bairro_origem" ><?= $data['combo_bairro_origem'] ?></select>
 
         <label for="id_uf_destino">Estado <?= Util::imageRequired() ?></label>
-        <?= $data['combo_uf_destino'] ?>
+        <select id="id_uf_destino" name="id_uf_destino" ><?= $data['combo_uf_destino'] ?></select>
 
         <label for="id_cidade_destino">Cidade <?= Util::imageRequired() ?></label>
-        <select id="id_cidade_destino" name="id_cidade_destino" ></select>
+        <select id="id_cidade_destino" name="id_cidade_destino" ><?= $data['combo_cidade_destino'] ?></select>
 
         <label for="id_bairro_destino">Bairro <?= Util::imageRequired() ?></label>
-        <select id="id_bairro_destino" name="id_bairro_destino" ></select>
+        <select id="id_bairro_destino" name="id_bairro_destino" ><?= $data['combo_bairro_destino'] ?></select>
 
         <label for="hora_inicio" class="description">Hora Início <?= Util::imageRequired() ?></label>
         <input id="hora_inicio" name="hora_inicio" type="text" value="<?= $data['hora_inicio']; ?>"/>

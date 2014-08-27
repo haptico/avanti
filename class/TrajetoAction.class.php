@@ -146,8 +146,11 @@ EOT;
         if ($ID > 0) {
             $obj = self::load($ID);
             $idBairroOrigem = $obj->getIdBairroOrigem();
-            $idCidadeOrigem = Bairro::getCidade($obj->getIdBairroOrigem());
-            $ifUfOrigem = Bairro::getCidade($obj->getIdBairroOrigem());
+            $idCidadeOrigem = BairroAction::getCidade($idBairroOrigem);
+            $idUfOrigem = CidadeAction::getUF($idCidadeOrigem);
+            $idBairroDestino = $obj->getIdBairroDestino();
+            $idCidadeDestino = BairroAction::getCidade($idBairroDestino);
+            $idUfDestino = CidadeAction::getUF($idCidadeDestino);
             $data['ID'] = $obj->getID();
             $data['descricao'] = $obj->getDescricao();
             $data['id_veiculo'] = $obj->getIdVeiculo();
@@ -158,12 +161,21 @@ EOT;
             $data['preco_mensalista'] = $obj->getPrecoMensalista();
             $data['preco_avulso'] = $obj->getPrecoAvulso();
             $data['combo_veiculo'] = VeiculoAction::getCombobox($obj->getIdVeiculo());
-            $data['combo_bairro_origem'] = Bairro::getCombobox($obj->getIdBairroOrigem(), );
-            $data['combo_bairro_destino'] = UFAction::getCombobox();
-            $data['combo_uf_origem'] = UFAction::getCombobox();
-            $data['combo_uf_destino'] = UFAction::getCombobox();
+            $data['combo_bairro_origem'] = BairroAction::getCombobox($idBairroOrigem, $idCidadeOrigem);
+            $data['combo_bairro_destino'] = BairroAction::getCombobox($idBairroDestino, $idCidadeDestino);
+            $data['combo_cidade_origem'] = CidadeAction::getCombobox($idCidadeOrigem, $idUfOrigem);
+            $data['combo_cidade_destino'] = CidadeAction::getCombobox($idCidadeDestino, $idUfDestino);
+            $data['combo_uf_origem'] = UFAction::getCombobox($idUfOrigem);
+            $data['combo_uf_destino'] = UFAction::getCombobox($idUfDestino);
         } else {
             $data['ID'] = 0;
+            $data['combo_veiculo'] = VeiculoAction::getCombobox();
+            $data['combo_bairro_origem'] = "<option>Escolha a cidade de origem</option>";
+            $data['combo_bairro_destino'] = "<option>Escolha a cidade de destino</option>";
+            $data['combo_cidade_origem'] = "<option>Escolha o estado de origem</option>";
+            $data['combo_cidade_destino'] = "<option>Escolha o estado de destino</option>";
+            $data['combo_uf_origem'] = UFAction::getCombobox();
+            $data['combo_uf_destino'] = UFAction::getCombobox();
         }
         return $data;
     }
