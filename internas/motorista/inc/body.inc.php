@@ -1,5 +1,10 @@
 </head>
   <body>
+      <form method="post" enctype="multipart/form-data" id="form" action="index.php">
+          <input type="hidden" name="id_acesso" id="id_acesso" value="<?=$_POST['id_acesso'];?>">
+          <input type="hidden" name="target" id="target" value="">
+          <input type="hidden" name="acao" id="acao" value="">
+          <input type="hidden" name="ID" id="ID" value="">
       <div id="all">
           <div id="header">
               <h1>Painel Administrativo</h1>
@@ -8,7 +13,7 @@
           <div id="content">
               <div class="menu">
                   <fieldset>
-                      <legend>ááá</legend>
+                      <legend></legend>
                       <?=  AcessoAction::exibeMenu();?>
                       <ul>
                           <li><a href="logoff.php">Sair</a></li>

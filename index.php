@@ -5,7 +5,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 include('inc/init.inc.php');
 
-$idAcesso = $_POST['pagina'];
+$idAcesso = $_POST['id_acesso'];
 $msg = '';
 $interna = 'login.php';
 $pastaUsuario = '';

@@ -21,12 +21,12 @@ class AcessoAction {
         $SQL = "
             SELECT id AS id_acesso, nome, arquivo, visivel
             FROM acesso
-            WHERE id_acesso = '".  Util::escapeMySQL($ID)."'";
+            WHERE id = '".  Util::escapeMySQL($ID)."'";
         $rs = $db->geraMatriz($SQL);
         if(Util::arrayTemItens($rs)){
             //if acesso for permitido{
                 $obj = self::loadBean($rs[0]);
-                $ret['ARQUIVO'] = $obj->getNome();
+                $ret['ARQUIVO'] = $obj->getArquivo();
                 $ret['EXIBE'] = TRUE;
             //}else{
             //$ret['MSG'] = 'Acesso não permitido.';
@@ -46,7 +46,7 @@ class AcessoAction {
         $rs = $db->geraMatriz($SQL);
         if(Util::arrayTemItens($rs)){
             foreach ($rs as $row) {
-                $strMenu .= '<ul><li><a href="javascript: void(0);" onclick="navega('.$row['id_acesso'].')" >'.$row['nome'].'</a></li></ul>';
+                $strMenu .= '<ul><li><a href="javascript: void(0);" onclick="navegaMenu('.$row['id_acesso'].')" >'.$row['nome'].'</a></li></ul>';
             }
         }
         return $strMenu;

@@ -12,3 +12,18 @@
     <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
+    <script type="text/javascript">
+        function navega(idAcesso, target, acao){
+            $('#acao').val(acao);
+            $('#target').val(target);
+            $('#id_acesso').val(idAcesso);
+            $('#form').submit();
+        }
+        function navegaMenu(idAcesso){
+            $('#acao').val('');
+            $('#target').val('');
+            $('#id_acesso').val(idAcesso);
+            $('#form').submit();
+        }
+    </script>
+    
