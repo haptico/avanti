@@ -5,7 +5,7 @@
     
     <div id="alertSucesso" style="display:none" class="alert_sucesso" ></div>
     <div id="alertCadastro" style="display:none" class="alert_cadastro" > </div>
-    <input type="hidden" id="ID" name="ID" value="" />
+    <input type="hidden" id="ID" name="id_veiculo" value="" />
     <div>
         <input type='button' id="btnNovoRegistro" value="Incluir novo registro" class="btn botaoAdicionar" />
     </div>
