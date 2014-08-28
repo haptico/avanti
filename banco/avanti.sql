@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2014-08-25 18:33:44
+Date: 2014-08-28 17:17:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,13 +26,13 @@ CREATE TABLE `acesso` (
   `visivel` enum('N','S') NOT NULL DEFAULT 'S',
   `id_tipo_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of acesso
 -- ----------------------------
-INSERT INTO `acesso` VALUES ('1', 'internas/motorista/veiculo/lista.php', 'Veículos', 'S', '1');
-INSERT INTO `acesso` VALUES ('2', 'internas/motorista/veiculo/cadastro.php', 'Veículos', 'N', '1');
+INSERT INTO `acesso` VALUES ('1', 'veiculo/controller.php', 'Veículos', 'S', '1');
+INSERT INTO `acesso` VALUES ('2', 'trajeto/controller.php', 'Trajetos', 'S', '1');
 
 -- ----------------------------
 -- Table structure for `avulso`
@@ -49,8 +49,8 @@ CREATE TABLE `avulso` (
   KEY `fk_avulso_usuario` (`id_usuario`) USING BTREE,
   KEY `fk_avulso_trajeto` (`id_trajeto`) USING BTREE,
   KEY `fk_avulso_ponto` (`id_ponto`) USING BTREE,
-  CONSTRAINT `fk_avulso_ponto` FOREIGN KEY (`id_ponto`) REFERENCES `ponto` (`id`),
   CONSTRAINT `fk_avulso_trajeto` FOREIGN KEY (`id_trajeto`) REFERENCES `trajeto` (`id`),
+  CONSTRAINT `fk_avulso_ponto` FOREIGN KEY (`id_ponto`) REFERENCES `ponto` (`id`),
   CONSTRAINT `fk_avulso_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48935,10 +48935,10 @@ CREATE TABLE `mensalista` (
   `data_fim` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_mensalista_usuario` (`id_usuario`),
-  KEY `fk_mensalista_trajeto` (`id_trajeto`),
   KEY `fk_mensalista_ponto` (`id_ponto`),
-  CONSTRAINT `fk_mensalista_ponto` FOREIGN KEY (`id_ponto`) REFERENCES `ponto` (`id`),
+  KEY `fk_mensalista_trajeto` (`id_trajeto`),
   CONSTRAINT `fk_mensalista_trajeto` FOREIGN KEY (`id_trajeto`) REFERENCES `trajeto` (`id`),
+  CONSTRAINT `fk_mensalista_ponto` FOREIGN KEY (`id_ponto`) REFERENCES `ponto` (`id`),
   CONSTRAINT `fk_mensalista_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48959,10 +48959,10 @@ CREATE TABLE `ponto` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_trajeto` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_ponto_trajeto` (`id_trajeto`),
   KEY `fk_ponto_bairro` (`id_bairro`),
-  CONSTRAINT `fk_ponto_bairro` FOREIGN KEY (`id_bairro`) REFERENCES `bairro` (`id`),
-  CONSTRAINT `fk_ponto_trajeto` FOREIGN KEY (`id_trajeto`) REFERENCES `trajeto` (`id`)
+  KEY `fk_ponto_trajeto` (`id_trajeto`),
+  CONSTRAINT `fk_ponto_trajeto` FOREIGN KEY (`id_trajeto`) REFERENCES `trajeto` (`id`),
+  CONSTRAINT `fk_ponto_bairro` FOREIGN KEY (`id_bairro`) REFERENCES `bairro` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -48997,11 +48997,13 @@ CREATE TABLE `tipo_veiculo` (
   `ativo` enum('N','S') NOT NULL DEFAULT 'S',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tipo_veiculo
 -- ----------------------------
+INSERT INTO `tipo_veiculo` VALUES ('1', 'Van', 'S', '2014-08-27 17:29:31');
+INSERT INTO `tipo_veiculo` VALUES ('2', 'Micro Ônibus', 'S', '2014-08-27 17:29:41');
 
 -- ----------------------------
 -- Table structure for `trajeto`
@@ -49010,27 +49012,28 @@ DROP TABLE IF EXISTS `trajeto`;
 CREATE TABLE `trajeto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(4000) DEFAULT NULL,
-  `id_van` int(11) NOT NULL,
+  `id_veiculo` int(11) NOT NULL,
   `hora_inicio` time NOT NULL,
   `hora_fim` time NOT NULL,
   `id_bairro_origem` int(11) NOT NULL,
   `id_bairro_destino` int(11) NOT NULL,
-  `preco_mensalista` float NOT NULL,
-  `preco_avulso` float NOT NULL,
+  `preco_mensalista` decimal(15,2) NOT NULL,
+  `preco_avulso` decimal(15,2) NOT NULL,
   `ativo` enum('N','S') NOT NULL DEFAULT 'S',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_trajeto_van` (`id_van`),
-  KEY `fk_trajeto_bairro_origem` (`id_bairro_origem`),
-  KEY `fk_trajeto_bairro_destino` (`id_bairro_destino`),
-  CONSTRAINT `fk_trajeto_bairro_destino` FOREIGN KEY (`id_bairro_destino`) REFERENCES `bairro` (`id`),
-  CONSTRAINT `fk_trajeto_bairro_origem` FOREIGN KEY (`id_bairro_origem`) REFERENCES `bairro` (`id`),
-  CONSTRAINT `fk_trajeto_van` FOREIGN KEY (`id_van`) REFERENCES `veiculo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_trajeto_veiculo` (`id_veiculo`) USING BTREE,
+  KEY `fk_trajeto_bairro_origem` (`id_bairro_origem`) USING BTREE,
+  KEY `fk_trajeto_bairro_destino` (`id_bairro_destino`) USING BTREE,
+  CONSTRAINT `trajeto_ibfk_1` FOREIGN KEY (`id_bairro_destino`) REFERENCES `bairro` (`id`),
+  CONSTRAINT `trajeto_ibfk_2` FOREIGN KEY (`id_bairro_origem`) REFERENCES `bairro` (`id`),
+  CONSTRAINT `trajeto_ibfk_3` FOREIGN KEY (`id_veiculo`) REFERENCES `veiculo` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of trajeto
 -- ----------------------------
+INSERT INTO `trajeto` VALUES ('2', 'Niterói - Barra', '1', '06:30:00', '08:15:00', '11371', '12155', '500.00', '10.00', 'S', '2014-08-28 09:40:01');
 
 -- ----------------------------
 -- Table structure for `uf`
@@ -49121,8 +49124,9 @@ CREATE TABLE `veiculo` (
   KEY `fk_veiculo_tipo_veiculo` (`id_tipo_veiculo`),
   CONSTRAINT `fk_veiculo_tipo_veiculo` FOREIGN KEY (`id_tipo_veiculo`) REFERENCES `tipo_veiculo` (`id`),
   CONSTRAINT `fk_veiculo_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of veiculo
 -- ----------------------------
+INSERT INTO `veiculo` VALUES ('1', 'Teste', 'ABC 1234', '15', '1', '1', 'S', '2014-08-27 17:30:11');
