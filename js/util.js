@@ -1,5 +1,5 @@
 /* 
- *  funcoes genéricas
+ *  funcoes genï¿½ricas
  * by: pls
  */
 
@@ -85,8 +85,23 @@ return s.join(dec);}
  * gera um alert com a mensagem contida em msg
  */
 function alertMsg() {
+    if($('#retornoStatus').val()=='sucesso'){
+        alertSucesso();
+    }else if($('#retornoStatus').val()=='erro'){
+        alertCadastro();
+    }
+}
+function alertSucesso() {
     if($('#msg')[0] && $('#msg').val() != ''){
-        alert($('#msg').val());
+        $("#alertSucesso").html($('#msg').val());
+        $("#alertSucesso").show();
+        $('#msg').val('');
+    }
+}
+function alertCadastro() {
+    if($('#msg')[0] && $('#msg').val() != ''){
+        $("#alertCadastro").html($('#msg').val());
+        $("#alertCadastro").show();
         $('#msg').val('');
     }
 }

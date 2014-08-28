@@ -27,5 +27,10 @@
             $('#id_acesso').val(idAcesso);
             $('#form').submit();
         }
+        function limpaAlert() {
+            $("#alertCadastro").html('');
+            $("#alertCadastro").hide();
+            $("#alertSucesso").hide();
+        }
     </script>
     

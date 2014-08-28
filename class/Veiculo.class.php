@@ -23,7 +23,7 @@ class Veiculo {
         $this->setDescricao($descricao);
         $this->setPlaca($placa);
         $this->setVagas($vagas);
-        $this->setTipoVeiculo($tipoVeiculo);
+        $this->setVeiculoTipo($tipoVeiculo);
     }
 
     

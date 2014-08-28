@@ -8,6 +8,7 @@ class VeiculoAction {
     
     public static function loadBean($row){
         $obj = new Veiculo();
+        $obj->setID($row['id_veiculo']);
         $obj->setPlaca($row['placa']);
         $obj->setVagas($row['vagas']);
         $obj->setDescricao($row['descricao_veiculo']);
@@ -21,8 +22,8 @@ class VeiculoAction {
         if($obj->getIdUsuario() > 0){
             $obj->setUsuario(new Usuario($row['id_usuario'], $row['nome']));
         }
-        if($obj->getIdVeiculoTipo() > 0){
-            $obj->setTipoVeiculo(new VeiculoTipo($row['id_veiculo_tipo'], $row['nome_veiculo_tipo']));
+        if($obj->getIdTipoVeiculo() > 0){
+            $obj->setVeiculoTipo(new VeiculoTipo($row['id_tipo_veiculo'], $row['nome_tipo_veiculo']));
         }
         
         return $obj;
@@ -101,7 +102,7 @@ class VeiculoAction {
         if ($ID > 0) {
             $obj = self::load($ID);
             $data['ID'] = $obj->getID();
-            $data['id_tipo_veiculo'] = $obj->getID();
+            $data['id_tipo_veiculo'] = $obj->getIdTipoVeiculo();
             $data['placa'] = $obj->getPlaca();
             $data['vagas'] = $obj->getVagas();
             $data['descricao_veiculo'] = $obj->getDescricao();
@@ -125,18 +126,17 @@ class VeiculoAction {
                 $usuario = ($object->getUsuario() instanceof Usuario) ? $object->getUsuario()->getNome() : 'N/D';
                 
                 if($object->getAtivo() == "S"){
-                    $ativacao = "<img src=\"../img/img_sinalVerde.gif\" id=\"imgBanner_".$object->getID()."\" style=\"cursor:pointer;\" alt=\"Ativa\" onclick=\"setAtivacao('".$object->getID()."')\" />";
+                    $ativacao = "<img src=\"img/img_sinalVerde.gif\" id=\"imgBanner_".$object->getID()."\" style=\"cursor:pointer;\" alt=\"Ativa\" onclick=\"setAtivacao('".$object->getID()."')\" />";
                 }else{
-                    $ativacao = "<img src=\"../img/img_sinalVermelho.gif\" id=\"imgBanner_".$object->getID()."\" style=\"cursor:pointer;\" alt=\"Desativa\" onclick=\"setAtivacao('".$object->getID()."')\" />";
+                    $ativacao = "<img src=\"img/img_sinalVermelho.gif\" id=\"imgBanner_".$object->getID()."\" style=\"cursor:pointer;\" alt=\"Desativa\" onclick=\"setAtivacao('".$object->getID()."')\" />";
                 }
-                $excluir = "<img alt=\"Excluir\" src=\"../img/delete.gif\" style=\"cursor:pointer;\" onClick=\"confirmaExclusao(".$object->getID().",'".$object->getDescricao()."')\" />";
+                $excluir = "<img alt=\"Excluir\" src=\"img/delete.gif\" style=\"cursor:pointer;\" onClick=\"confirmaExclusao(".$object->getID().",'".$object->getDescricao()."')\" />";
                 
                 $strCorpoTabela .= <<<EOT
             <tr>
                 <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="editar('{$object->getID()}')" /></td>
                 <td style="width:60px;text-align: center">{$ativacao}</td>
                 <td style="width:60px;text-align: center">{$excluir}</td>
-                <td>{$usuario}</td>
                 <td>{$tipoVeiculo}</td>
                 <td>{$object->getPlaca()}</td>
                 <td>{$object->getVagas()}</td>
@@ -156,7 +156,12 @@ EOT;
                     inner join usuario u on u.id = v.id_usuario and u.id = 1";
         $strCombobox = Util::getComboBySQL($SQL, $IDSelected);
         return $strCombobox;
-
     }
     
+    
+    public static function excluir($ID){
+        $db = new Conexao();
+        $SQL = "DELETE FROM veiculo WHERE id = ".$ID;
+        return $db->execute($SQL);
+    }
 }
