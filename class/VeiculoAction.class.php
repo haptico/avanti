@@ -134,7 +134,7 @@ class VeiculoAction {
                 
                 $strCorpoTabela .= <<<EOT
             <tr>
-                <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="editar('{$object->getID()}')" /></td>
+                <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="navega('cadastro','','{$object->getID()}')" /></td>
                 <td style="width:60px;text-align: center">{$ativacao}</td>
                 <td style="width:60px;text-align: center">{$excluir}</td>
                 <td>{$tipoVeiculo}</td>
