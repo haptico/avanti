@@ -158,10 +158,15 @@ EOT;
         return $strCombobox;
     }
     
-    
     public static function excluir($ID){
         $db = new Conexao();
         $SQL = "DELETE FROM veiculo WHERE id = ".$ID;
+        return $db->execute($SQL);
+    }
+    
+    public static function setAtivacao($ID, $indAtivacao){
+        $db = new Conexao();
+        $SQL = "UPDATE veiculo SET ativo = '$indAtivacao' WHERE id = ".$ID;
         return $db->execute($SQL);
     }
 }

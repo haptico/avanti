@@ -28,7 +28,7 @@ function setAtivacao( id) {
             imgAtiv.src = "img/img_sinalVermelho.gif";
             flgAtivacao = "N";
         }
-        $.getJSON("mod/evento/setAtivacao.php",{
+        $.getJSON("restrita/motorista/veiculo/setAtivacao.php",{
             id: id,
             indAtivacao: flgAtivacao,
             ajax: 'true'
