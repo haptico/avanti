@@ -1,4 +1,4 @@
-<script type="text/javascript" src="internas/motorista/veiculo/js/lista.js"></script>
+<script type="text/javascript" src="restrita/motorista/veiculo/js/lista.js"></script>
 <div class="interno">
     <h2>Lista de Veículos</h2>
     <hr />

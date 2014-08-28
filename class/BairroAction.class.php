@@ -4,9 +4,9 @@
  *
  * @author Bruno Rossetto
  */
-class Bairro {
+class BairroAction {
     public static function getCombobox($IDSelected = "", $cidade = null){
-        $strCombobox = Util::getCombobox('nome', 'id', 'cidade', $IDSelected, !is_null($cidade)?"and id_cidade = $cidade":"");
+        $strCombobox = Util::getCombobox('nome', 'id', 'bairro', $IDSelected, !is_null($cidade)?"and id_cidade = $cidade":"");
         return $strCombobox;
     }
     

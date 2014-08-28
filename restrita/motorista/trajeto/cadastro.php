@@ -1,12 +1,13 @@
-<script type="text/javascript" src="internas/motorista/trajeto/js/cadastro.js"></script>
-<input type="hidden" id="ID" name="ID" value="<?= $data['ID'] ?>" />
+<script type="text/javascript" src="restrita/motorista/trajeto/js/cadastro.js"></script>
+
+<input type="hidden" id="ID" name="id_trajeto" value="<?= $data['id_trajeto'] ?>" />
 <div class="interno">
     <h2>Cadastro de Trajeto</h2>
     <div id="alertSucesso" style="display:none" class="alert_sucesso" >Evento cadastrado com sucesso.</div>
     <div id="alertCadastro" style="display:none" class="alert_cadastro" > </div>
     <hr />
     <div class="form_div">
-        <label for="descricao" class="description">Descrição <?= Util::imageRequired() ?></label>
+        <label for="descricao">Descrição <?= Util::imageRequired() ?></label>
         <textarea id="descricao" name="descricao" ><?= $data['descricao']; ?></textarea>
 
         <label for="id_veiculo">Veiculo <?= Util::imageRequired() ?></label>
@@ -30,16 +31,16 @@
         <label for="id_bairro_destino">Bairro <?= Util::imageRequired() ?></label>
         <select id="id_bairro_destino" name="id_bairro_destino" ><?= $data['combo_bairro_destino'] ?></select>
 
-        <label for="hora_inicio" class="description">Hora Início <?= Util::imageRequired() ?></label>
-        <input id="hora_inicio" name="hora_inicio" type="text" value="<?= $data['hora_inicio']; ?>"/>
+        <label for="hora_inicio">Hora Início <?= Util::imageRequired() ?></label>
+        <input id="hora_inicio" name="hora_inicio" type="text" class="timepicker" value="<?= $data['hora_inicio']; ?>"/>
 
-        <label for="hora_fim" class="description">Hora Fim <?= Util::imageRequired() ?></label>
-        <input id="hora_fim" name="hora_fim" type="text" value="<?= $data['hora_fim']; ?>"/>
+        <label for="hora_fim">Hora Fim <?= Util::imageRequired() ?></label>
+        <input id="hora_fim" name="hora_fim" type="text" class="timepicker" value="<?= $data['hora_fim']; ?>"/>
 
-        <label for="preco_mensalista" class="description">Preço Mensalista<?= Util::imageRequired() ?></label>
+        <label for="preco_mensalista">Preço Mensalista<?= Util::imageRequired() ?></label>
         <input id="preco_mensalista" name="preco_mensalista" type="text" value="<?= $data['preco_mensalista']; ?>"/>
 
-        <label for="preco_avulso" class="description">Preço Avulso<?= Util::imageRequired() ?></label>
+        <label for="preco_avulso">Preço Avulso<?= Util::imageRequired() ?></label>
         <input id="preco_avulso" name="preco_avulso" type="text" value="<?= $data['preco_avulso']; ?>"/>
 
         <div class="quebraLinha"></div>

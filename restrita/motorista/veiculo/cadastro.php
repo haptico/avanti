@@ -1,4 +1,4 @@
-<script type="text/javascript" src="internas/motorista/veiculo/js/cadastro.js"></script>
+<script type="text/javascript" src="restrita/motorista/veiculo/js/cadastro.js"></script>
 <input type="hidden" id="ID" name="id_veiculo" value="<?= $data['ID'] ?>" />
 <div class="interno">
     <h2>Cadastro de veículos</h2>

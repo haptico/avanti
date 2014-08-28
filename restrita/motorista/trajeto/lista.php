@@ -1,12 +1,11 @@
-<script type="text/javascript" src="internas/motorista/trajeto/js/lista.js"></script>
+<script type="text/javascript" src="restrita/motorista/trajeto/js/lista.js"></script>
 <div class="interno">
     <h2>Lista de Trajetos</h2>
     <hr />
     
     <div id="alertSucesso" style="display:none" class="alert_sucesso" >Trajeto cadastrado com sucesso.</div>
     <div id="alertCadastro" style="display:none" class="alert_cadastro" > </div>
-    <input type="hidden" id="ID" name="ID" value="" />
-    <input type="hidden" id="filtrou" name="filtrou" value="" />
+    <input type="hidden" id="ID" name="id_trajeto" value="" />
     <div>
         <input type='button' id="btnNovoRegistro" value="Incluir novo registro" class="btn botaoAdicionar" />
     </div>

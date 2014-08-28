@@ -5,10 +5,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 include('inc/init.inc.php');
 
-$idAcesso = $_POST['id_acesso'];
 $msg = '';
-$interna = 'login.php';
-$pastaUsuario = '';
+$pagina = 'login.php';
 $usuLogado = UsuarioAction::isLogged();
 if(!$usuLogado){
     //verifica login
@@ -17,27 +15,12 @@ if(!$usuLogado){
         if (!($usuario)) {
             $msg = 'Usuário não encontrado';
         }else{
-            $interna = 'principal.php';
-            $pastaUsuario = $_SESSION['PERFILUSERLOGADO_AVANTI'].'/';
-            //$pastaUsuario = ''; //carrega pasta do usuario de acordo com o perfil
+            $pagina = 'restrita/principal.php';
         }
     }
 }else{
-    $interna = 'principal.php';
-    $pastaUsuario = $_SESSION['PERFILUSERLOGADO_AVANTI'].'/';
-    if($idAcesso > 0){
-        $retAcesso = AcessoAction::exibeAcesso($idAcesso);
-        if($retAcesso['EXIBE']){
-            $interna = $retAcesso['ARQUIVO'];
-        }else{
-            echo $retAcesso['MSG'];
-        }
-    }
+    $pagina = 'restrita/principal.php';
 }
-if($pastaUsuario!=''){
-    include('internas/'.$pastaUsuario.'/inc/header.inc.php');
-    include('internas/'.$pastaUsuario.'/inc/body.inc.php');
-}
-include('internas/'.$pastaUsuario.$interna);
-include('inc/footer.inc.php');
+
+include($pagina);
 ?>
