@@ -1,26 +1,31 @@
+<script type="text/javascript" src="internas/motorista/veiculo/js/lista.js"></script>
 <div class="interno">
-    <h2>LISTA</h2>
+    <h2>Lista de Veículos</h2>
     <hr />
     
-    <div id="alertSucesso" style="display:none" class="alert_sucesso" >Evento cadastrado com sucesso.</div>
+    <div id="alertSucesso" style="display:none" class="alert_sucesso" ></div>
     <div id="alertCadastro" style="display:none" class="alert_cadastro" > </div>
+    <input type="hidden" id="ID" name="ID" value="" />
+    <div>
+        <input type='button' id="btnNovoRegistro" value="Incluir novo registro" class="btn botaoAdicionar" />
+    </div>
     
     <?
-    if($strCorpoTabela != ''){
+    if($data['corpo_tabela'] != ''){
     ?>
         <table id="tableLista" class="tablesorter" >
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th width="100px">Data de Início</th>
-                    <th width="100px">Data Final</th>
-                    <th width="60px" align="center">Ativação</th>
                     <th width="40px" align="center">Editar</th>
+                    <th width="60px" align="center">Ativação</th>
                     <th width="40px" align="center">Excluir</th>
+                    <th>Veículo</th>
+                    <th>Placa</th>
+                    <th width="100px">Vagas</th>
                 </tr>
             </thead>
             <tbody>
-                <?=$strCorpoTabela?>
+                <?=$data['corpo_tabela']?>
             </tbody>
         </table>
 

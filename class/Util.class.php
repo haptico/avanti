@@ -239,7 +239,7 @@ EOT;
         return $output;
     }
     
-    public static function getCombobox($campo, $id, $tabela, $selected = '', $filtros = '', $isFiltro = TRUE) {
+    public static function getCombobox($campo, $id, $tabela, $selected = '', $filtros = '', $isFiltro = FALSE) {
         $db = new Conexao();
         $SQL = "
             SELECT $campo as nome, $id as id

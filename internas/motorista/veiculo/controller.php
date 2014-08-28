@@ -4,15 +4,26 @@ $arrTarget = array('lista','cadastro');
 $ID = ($_POST['ID'] != '')?$_POST['ID']:0;
 $target = $_POST['target'];
 $msg = '';
+$acao = $_POST['acao'];
 
 //============ACOES============================
 if($acao == 'GRAVAR'){
-    $obj = TrajetoAction::loadBean($_POST);
-    if(is_null(TrajetoAction::gravar($obj))){
+    $obj = VeiculoAction::loadBean($_POST);
+    if(VeiculoAction::gravar($obj)){
         $msg = 'Registro salvo com sucesso';
+        $retornoStatus = 'sucesso';
     }else{
-        $msg = 'Erro ao gravar trajeto';
+        $retornoStatus = 'erro';
+        $msg = 'Erro ao gravar veículo';
         $target = 'cadastro';
+    }
+}elseif($acao == 'EXCLUIR'){
+    if(VeiculoAction::excluir($ID)){
+        $msg = 'Veículo excluído com sucesso';
+        $retornoStatus = 'sucesso';
+    }else{
+        $retornoStatus = 'erro';
+        $msg = 'Erro ao excluir veículo';
     }
 }
 //==============FIM ACOES============================
@@ -20,13 +31,14 @@ if($acao == 'GRAVAR'){
 //============CARREGA A VIEW============================
 $target = (in_array($target, $arrTarget))?$target:'lista';
 if($target == 'cadastro'){
-    //$data = TrajetoAction::getDataCadastro($ID);
+    $data = VeiculoAction::getDataCadastro($ID);
 }elseif($target == 'lista'){
-    //$data = TrajetoAction::getDataLista($_POST);
+    $data = VeiculoAction::getDataLista($_POST);
 }
 
 //========TRATA O TARGET E O DIRECIONAMENTO
 echo '<input type="hidden" name="msg" id="msg" value="'.$msg.'" />';
+echo '<input type="hidden" id="retornoStatus" value="'.$retornoStatus.'" />';
 $pathFile = str_replace('controller', $target, __FILE__);
 if(is_file($pathFile)){
     require($pathFile);
