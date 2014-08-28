@@ -6,11 +6,16 @@
     <title>AVANTI || Motorista</title>
     
     <link type="text/css" rel="stylesheet" href="internas/motorista/css/default.css" />
+    <link rel="stylesheet" href="css/plugins/ui-lightness/jquery-ui-1.10.0.custom.min.css" type="text/css" />
     <link type="text/css" rel="stylesheet" href="css/jquery.tablesorter.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery.tablesorter.pager.css" />
     
     <script type="text/javascript" src="js/util.js"></script>
-    <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.tabs.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.position.min.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
     <script type="text/javascript">
