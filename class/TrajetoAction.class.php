@@ -32,15 +32,19 @@ class TrajetoAction {
     public static function getLista($idUsuario, $filtros = "") {
         $db = new Conexao();
         $SQL = "SELECT 
-                    t.id AS id_trajeto, t.descricao, t.id_veiculo, t.hora_inicio, 
-                    t.hora_fim, t.id_bairro_origem, t.id_bairro_destino,
-                    t.preco_mensalista, t.preco_avulso, t.ativo, t.created, 
-                    v.descricao as nome_veiculo, bo.nome as nome_bairro_origem, 
-                    bd.nome as nome_bairro_destino
+                    t.id AS id_trajeto, t.descricao, t.id_veiculo, 
+                    time_format(t.hora_inicio, '%H:%i') as hora_inicio, 
+                    time_format(t.hora_fim, '%H:%i') as hora_fim, 
+                    t.id_bairro_origem, t.id_bairro_destino,
+                    concat('R$ ',format(t.preco_mensalista, 2,'pt_BR')) as preco_mensalista, 
+                    concat('R$ ',format(t.preco_avulso, 2, 'pt_BR')) as preco_avulso, 
+                    t.ativo, t.created, concat(tv.nome, ' - ', v.placa) as nome_veiculo, 
+                    bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino
                 FROM trajeto t
-                    left join veiculo v on v.id = t.id_veiculo
-                    left join bairro bo on bo.id = t.id_bairro_origem
-                    left join bairro bd on bd.id = t.id_bairro_destino
+                    inner join veiculo v on v.id = t.id_veiculo
+                    inner join tipo_veiculo tv on tv.id = v.id_tipo_veiculo
+                    inner join bairro bo on bo.id = t.id_bairro_origem
+                    inner join bairro bd on bd.id = t.id_bairro_destino
                 WHERE v.id_usuario = $idUsuario ";
         if ($filtros != "") {
             $SQL.= "and {$filtros}";
@@ -60,15 +64,18 @@ class TrajetoAction {
         }
         $db = new Conexao();
         $SQL = "SELECT 
-                    t.id AS id_trajeto, t.descricao, t.id_veiculo, t.hora_inicio, 
-                    t.hora_fim, t.id_bairro_origem, t.id_bairro_destino,
+                    t.id AS id_trajeto, t.descricao, t.id_veiculo, 
+                    time_format(t.hora_inicio, '%H:%i') as hora_inicio, 
+                    time_format(t.hora_fim, '%H:%i') as hora_fim, 
+                    t.id_bairro_origem, t.id_bairro_destino,
                     t.preco_mensalista, t.preco_avulso, t.ativo, t.created, 
-                    v.descricao as nome_veiculo, bo.nome as nome_bairro_origem, 
-                    bd.nome as nome_bairro_destino
+                    concat(tv.nome, ' - ', v.placa) as nome_veiculo, 
+                    bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino
                 FROM trajeto t
-                    left join veiculo v on v.id = t.id_veiculo
-                    left join bairro bo on bo.id = t.id_bairro_origem
-                    left join bairro bd on bd.id = t.id_bairro_destino
+                    inner join veiculo v on v.id = t.id_veiculo
+                    inner join tipo_veiculo tv on tv.id = v.id_tipo_veiculo
+                    inner join bairro bo on bo.id = t.id_bairro_origem
+                    inner join bairro bd on bd.id = t.id_bairro_destino
                 WHERE t.id = $ID ";
         $rs = $db->geraMatriz($SQL);
         if ($rs && sizeof($rs) > 0) {
@@ -82,6 +89,7 @@ class TrajetoAction {
         if (is_null($db)) {
             $db = new Conexao();
         }
+        
         if ($objeto->getID() > 0) {
             $SQL = "
                 UPDATE trajeto SET
@@ -115,17 +123,17 @@ class TrajetoAction {
 
     public static function getDataLista($post) {
         global $id_usuario_logado;
-        $arrObject = self::getLista($id_usuario_logado);
+        $arrObject = self::getLista(1);
         $strCorpoTabela = '';
         if (Util::arrayTemItens($arrObject)) {
             foreach ($arrObject as $object) {
                 $bairroOrigem = ($object->getBairroOrigem() instanceof Bairro) ? $object->getBairroOrigem()->getNome() : 'N/D';
                 $bairroDestino = ($object->getBairroDestino() instanceof Bairro) ? $object->getBairroDestino()->getNome() : 'N/D';
-                $veiculo = ($object->getVeiculo() instanceof Veiculo) ? $object->getVeiculo()->getNome() : 'N/D';
+                $veiculo = ($object->getVeiculo() instanceof Veiculo) ? $object->getVeiculo()->getDescricao() : 'N/D';
                 
                 $strCorpoTabela .= <<<EOT
             <tr>
-                <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="editar('{$object->getID()}')" /></td>
+                <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="navega('cadastro', '', '{$object->getID()}')" /></td>
                 <td>{$object->getDescricao()}</td>
                 <td>{$veiculo}</td>
                 <td>{$bairroOrigem}</td>
@@ -146,12 +154,12 @@ EOT;
         if ($ID > 0) {
             $obj = self::load($ID);
             $idBairroOrigem = $obj->getIdBairroOrigem();
-            $idCidadeOrigem = BairroAction::getCidade($idBairroOrigem);
-            $idUfOrigem = CidadeAction::getUF($idCidadeOrigem);
+            $idCidadeOrigem = BairroAction::getCidade($idBairroOrigem)->getID();
+            $idUfOrigem = CidadeAction::getUF($idCidadeOrigem)->getID();
             $idBairroDestino = $obj->getIdBairroDestino();
-            $idCidadeDestino = BairroAction::getCidade($idBairroDestino);
-            $idUfDestino = CidadeAction::getUF($idCidadeDestino);
-            $data['ID'] = $obj->getID();
+            $idCidadeDestino = BairroAction::getCidade($idBairroDestino)->getID();
+            $idUfDestino = CidadeAction::getUF($idCidadeDestino)->getID();
+            $data['id_trajeto'] = $obj->getID();
             $data['descricao'] = $obj->getDescricao();
             $data['id_veiculo'] = $obj->getIdVeiculo();
             $data['id_bairro_origem'] = 
@@ -168,7 +176,7 @@ EOT;
             $data['combo_uf_origem'] = UFAction::getCombobox($idUfOrigem);
             $data['combo_uf_destino'] = UFAction::getCombobox($idUfDestino);
         } else {
-            $data['ID'] = 0;
+            $data['id_trajeto'] = 0;
             $data['combo_veiculo'] = VeiculoAction::getCombobox();
             $data['combo_bairro_origem'] = "<option>Escolha a cidade de origem</option>";
             $data['combo_bairro_destino'] = "<option>Escolha a cidade de destino</option>";

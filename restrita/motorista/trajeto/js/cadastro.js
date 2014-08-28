@@ -4,6 +4,9 @@ $(document).ready(function(){
         $("#btnVoltar").click(function() {navega("lista",'','')});
         alertMsg();
         $("#descricao").focus();
+        $(".timepicker").each(function() {
+            $(this).timepicker();
+        });
     }catch(erro){
         alert(erro.message);
     }
