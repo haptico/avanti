@@ -10,21 +10,41 @@ $(document).ready(function(){
 function confirmaExclusao(ID, nome){
     try {
         limpaAlert();
-        $("#alertCadastro").html('Confirma a exclus&atilde;o do veículo <b>'+nome+'</b>?&nbsp;&nbsp;&nbsp;<a href="javascript:excluir('+ID+')">Sim</a> | <a href="javascript:limpaAlert()">N&atilde;o</a>');
+        $("#alertCadastro").html('Confirma a exclus&atilde;o do veículo <b>'+nome+'</b>?&nbsp;&nbsp;&nbsp;<a href="javascript:navega(\'\',\'EXCLUIR\','+ID+')">Sim</a> | <a href="javascript:limpaAlert()">N&atilde;o</a>');
         $("#alertCadastro").show();
 } catch ( Erro ) {
         alert( Erro.message );
     }
 }
 
-function excluir(ID){
-    $("#ID").val(ID);
-    $('#acao').val('EXCLUIR');
-    $("#form").submit();
-}
-
-function editar(ID){
-    $("#ID").val(ID);
-    $("#target").val('cadastro');
-    $("#form").submit();
+function setAtivacao( id) {
+    try {
+        limpaAlert();
+        imgAtiv = document.getElementById("imgBanner_"+id);
+        if ( imgAtiv.src.indexOf("img_sinalVermelho") != -1 ) {
+            imgAtiv.src = "img/img_sinalVerde.gif";
+            flgAtivacao = "S";
+        } else if ( imgAtiv.src.indexOf("img_sinalVerde") != -1 ) {
+            imgAtiv.src = "img/img_sinalVermelho.gif";
+            flgAtivacao = "N";
+        }
+        $.getJSON("restrita/motorista/veiculo/setAtivacao.php",{
+            id: id,
+            indAtivacao: flgAtivacao,
+            ajax: 'true'
+        }, function(j){
+            if(j == "ERRO"){
+                if ( imgAtiv.src.indexOf("img_sinalVermelho") != -1 ) {
+                    imgAtiv.src = "img/img_sinalVerde.gif";
+                    flgAtivacao = "S";
+                } else if ( imgAtiv.src.indexOf("img_sinalVerde") != -1 ) {
+                    imgAtiv.src = "img/img_sinalVermelho.gif";
+                    flgAtivacao = "N";
+                }
+                alert("Erro na ativação");
+            }
+        })
+    } catch ( Erro ) {
+        alert( Erro.message );
+    }
 }

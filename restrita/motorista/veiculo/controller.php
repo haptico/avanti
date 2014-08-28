@@ -1,7 +1,7 @@
 <?php
 $arrTarget = array('lista','cadastro');
 
-$ID = ($_POST['ID'] != '')?$_POST['ID']:0;
+$ID = ($_POST['id_veiculo'] != '')?$_POST['id_veiculo']:0;
 $target = $_POST['target'];
 $msg = '';
 $acao = $_POST['acao'];
