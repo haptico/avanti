@@ -14,6 +14,7 @@ class VeiculoAction {
         $obj->setDescricao($row['descricao_veiculo']);
         $obj->setCreated($row['created_veiculo']);
         $obj->setAtivo($row['ativo_veiculo']);
+        $obj->setQtdeTrajetos($row['qtde_trajetos']);
         
         $obj->setIdUsuario($row['id_usuario']);
         $obj->setIdTipoVeiculo($row['id_tipo_veiculo']);
@@ -56,10 +57,12 @@ class VeiculoAction {
                     v.id AS id_veiculo, v.descricao as descricao_veiculo, v.placa, v.vagas, 
                     v.created AS created_veiculo, v.ativo AS ativo_veiculo,
                     vt.id AS id_tipo_veiculo, vt.nome AS nome_tipo_veiculo,
-                    u.id AS id_usuario, u.nome
+                    u.id AS id_usuario, u.nome,
+                    COUNT((CASE WHEN t.id > 0 THEN 1 ELSE NULL END)) qtde_trajetos
                 FROM veiculo v
                     INNER JOIN tipo_veiculo vt ON vt.id = v.id_tipo_veiculo
-                    left join usuario u on u.id = v.id_usuario";
+                    LEFT JOIN usuario u ON u.id = v.id_usuario
+                    LEFT JOIN trajeto t ON t.id_veiculo = v.id";
         $rs = $db->geraMatriz($SQL);
         if (Util::arrayTemItens($rs)) {
             foreach ($rs as $row) {
@@ -130,8 +133,9 @@ class VeiculoAction {
                 }else{
                     $ativacao = "<img src=\"img/img_sinalVermelho.gif\" id=\"imgBanner_".$object->getID()."\" style=\"cursor:pointer;\" alt=\"Desativa\" onclick=\"setAtivacao('".$object->getID()."')\" />";
                 }
-                $excluir = "<img alt=\"Excluir\" src=\"img/delete.gif\" style=\"cursor:pointer;\" onClick=\"confirmaExclusao(".$object->getID().",'".$object->getDescricao()."')\" />";
-                
+                if($object->getQtdeTrajetos() == 0){
+                    $excluir = "<img alt=\"Excluir\" src=\"img/delete.gif\" style=\"cursor:pointer;\" onClick=\"confirmaExclusao(".$object->getID().",'".$object->getDescricao()."')\" />";
+                }
                 $strCorpoTabela .= <<<EOT
             <tr>
                 <td style="width:60px;text-align: center"><img alt="Editar" src="img/edit.gif" style="cursor:pointer;" onclick="navega('cadastro','','{$object->getID()}')" /></td>

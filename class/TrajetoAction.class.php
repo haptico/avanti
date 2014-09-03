@@ -23,7 +23,7 @@ class TrajetoAction {
             $obj->setBairroDestino(new Bairro($row['id_bairro_destino'], $row['nome_bairro_destino']));
         }
         if($obj->getIdVeiculo() > 0){
-            $obj->setVeiculo(new Veiculo($row['id_veiculo'], $row['nome_veiculo']));
+            $obj->setVeiculo(VeiculoAction::loadBean($row));
         }
         
         return $obj;
@@ -38,7 +38,7 @@ class TrajetoAction {
                     t.id_bairro_origem, t.id_bairro_destino,
                     concat('R$ ',format(t.preco_mensalista, 2,'pt_BR')) as preco_mensalista, 
                     concat('R$ ',format(t.preco_avulso, 2, 'pt_BR')) as preco_avulso, 
-                    t.ativo, t.created, concat(tv.nome, ' - ', v.placa) as nome_veiculo, 
+                    t.ativo, t.created, concat(tv.nome, ' - ', v.placa) as descricao_veiculo, 
                     bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino
                 FROM trajeto t
                     inner join veiculo v on v.id = t.id_veiculo
@@ -69,7 +69,7 @@ class TrajetoAction {
                     time_format(t.hora_fim, '%H:%i') as hora_fim, 
                     t.id_bairro_origem, t.id_bairro_destino,
                     t.preco_mensalista, t.preco_avulso, t.ativo, t.created, 
-                    concat(tv.nome, ' - ', v.placa) as nome_veiculo, 
+                    concat(tv.nome, ' - ', v.placa) as descricao_veiculo, 
                     bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino
                 FROM trajeto t
                     inner join veiculo v on v.id = t.id_veiculo

@@ -15,6 +15,8 @@ class Veiculo {
     private $ativo;
     private $created;
     
+    private $qtdeTrajetos;
+    
     private $usuario;
     private $veiculoTipo;
     
@@ -105,5 +107,13 @@ class Veiculo {
 
     public function setVeiculoTipo($veiculoTipo) {
         $this->veiculoTipo = $veiculoTipo;
+    }
+    
+    public function getQtdeTrajetos() {
+        return $this->qtdeTrajetos;
+    }
+
+    public function setQtdeTrajetos($qtdeTrajetos) {
+        $this->qtdeTrajetos = $qtdeTrajetos;
     }
 }
