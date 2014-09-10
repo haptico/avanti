@@ -51,7 +51,7 @@ class VeiculoAction {
         return $obj;
     }
     
-    public static function getLista() {
+    public static function getLista($idResponsavel = 0) {
         $db = new Conexao();
         $SQL = "SELECT 
                     v.id AS id_veiculo, v.descricao as descricao_veiculo, v.placa, v.vagas, 
@@ -62,7 +62,11 @@ class VeiculoAction {
                 FROM veiculo v
                     INNER JOIN tipo_veiculo vt ON vt.id = v.id_tipo_veiculo
                     LEFT JOIN usuario u ON u.id = v.id_usuario
-                    LEFT JOIN trajeto t ON t.id_veiculo = v.id";
+                    LEFT JOIN trajeto t ON t.id_veiculo = v.id
+                WHERE 1 = 1";
+            if($idResponsavel > 0){
+                $SQL .= " AND v.id_usuario = ".$idResponsavel;
+            }
         $rs = $db->geraMatriz($SQL);
         if (Util::arrayTemItens($rs)) {
             foreach ($rs as $row) {
@@ -73,6 +77,8 @@ class VeiculoAction {
     }
     
     public static function gravar(Veiculo $objeto, $db = NULL) {
+        global $dadosUsuarioAvanti;
+        
         if (is_null($db)) {
             $db = new Conexao();
         }
@@ -94,7 +100,7 @@ class VeiculoAction {
                     '" . Util::escapeOracle($objeto->getPlaca()) . "', 
                     '" . Util::escapeOracle($objeto->getVagas()) . "', 
                     '" . Util::escapeOracle($objeto->getDescricao()) . "',
-                    '".Util::escapeOracle(1)."',
+                    '".Util::escapeOracle($dadosUsuarioAvanti->getID())."',
                     'S'
                 )";
         }
@@ -120,8 +126,9 @@ class VeiculoAction {
     }
     
     public static function getDataLista($post) {
-        global $id_usuario_logado;
-        $arrObject = self::getLista();
+        global $dadosUsuarioAvanti;
+        
+        $arrObject = self::getLista($dadosUsuarioAvanti->getID());
         $strCorpoTabela = '';
         if (Util::arrayTemItens($arrObject)) {
             foreach ($arrObject as $object) {
@@ -153,7 +160,6 @@ EOT;
     }
 
     public static function getCombobox($IDSelected = ""){
-        global $id_usuario_logado;
         $SQL = "select v.id as chave, concat(t.nome, ' - ', v.placa) as valor
                 from veiculo v
                     inner join tipo_veiculo t on t.id = v.id_tipo_veiculo

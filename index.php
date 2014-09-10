@@ -15,10 +15,12 @@ if(!$usuLogado){
         if (!($usuario)) {
             $msg = 'Usuário não encontrado';
         }else{
+            $dadosUsuarioAvanti = unserialize($_SESSION['USERLOGADO_AVANTI']);
             $pagina = 'restrita/principal.php';
         }
     }
 }else{
+    $dadosUsuarioAvanti = unserialize($_SESSION['USERLOGADO_AVANTI']);
     $pagina = 'restrita/principal.php';
 }
 

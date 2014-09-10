@@ -29,7 +29,7 @@ class TrajetoAction {
         return $obj;
     }
 
-    public static function getLista($idUsuario, $filtros = "") {
+    public static function getLista($idMotorista = 0, $filtros = "") {
         $db = new Conexao();
         $SQL = "SELECT 
                     t.id AS id_trajeto, t.descricao, t.id_veiculo, 
@@ -39,15 +39,20 @@ class TrajetoAction {
                     concat('R$ ',format(t.preco_mensalista, 2,'pt_BR')) as preco_mensalista, 
                     concat('R$ ',format(t.preco_avulso, 2, 'pt_BR')) as preco_avulso, 
                     t.ativo, t.created, concat(tv.nome, ' - ', v.placa) as descricao_veiculo, 
-                    bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino
+                    bo.nome as nome_bairro_origem, bd.nome as nome_bairro_destino,
+                    u.id AS id_usuario, u.nome
                 FROM trajeto t
                     inner join veiculo v on v.id = t.id_veiculo
+                    INNER JOIN usuario u ON u.id = v.id_usuario
                     inner join tipo_veiculo tv on tv.id = v.id_tipo_veiculo
                     inner join bairro bo on bo.id = t.id_bairro_origem
                     inner join bairro bd on bd.id = t.id_bairro_destino
-                WHERE v.id_usuario = $idUsuario ";
+                WHERE 1= 1 ";
+        if($idMotorista > 0){
+            $SQL .= " AND v.id_usuario =".$idMotorista;
+        }
         if ($filtros != "") {
-            $SQL.= "and {$filtros}";
+            $SQL.= "{$filtros}";
         }
         $rs = $db->geraMatriz($SQL);
         if ($rs && sizeof($rs) > 0) {
@@ -187,6 +192,74 @@ EOT;
         }
         return $data;
     }
+    
+    public static function getDataListaBusca($post) {
+        $data['origem_uf'] = $post['origem_uf'];
+        $data['origem_cidade'] = $post['origem_cidade'];
+        $data['origem_bairro'] = $post['origem_bairro'];
+        $data['destino_uf'] = $post['destino_uf'];
+        $data['destino_cidade'] = $post['destino_cidade'];
+        $data['destino_bairro'] = $post['destino_bairro'];
+        
+        
+        $data['buscou'] = FALSE;
+        //inicio filtros
+        $filtros = '';
+        if($post['origem_uf'] != '' && $post['origem_cidade'] != ''){ //tem q buscar por todos os pontos que passam (ERRADO POR ENQUANTO...)
+            $data['buscou'] = TRUE;
+            $filtros .= " AND bo.id_cidade = '{$post['origem_cidade']}'";
+            if($post['origem_bairro'] != ''){    
+                $filtros .= " AND bo.id = '{$post['origem_uf']}'";
+            }
+        }
+        if($post['destino_uf'] != '' && $post['destino_cidade'] != ''){
+            $data['buscou'] = TRUE;
+            $filtros .= " AND bd.id_cidade = '{$post['destino_cidade']}'";
+            if($post['destino_bairro'] != ''){
+                $filtros .= " AND bd.id = '{$post['destino_uf']}'";
+            }
+        }
+        //fim filtros
+        if($data['buscou']){
+            $arrObject = self::getLista(0, $filtros);
+            $strCorpoTabela = '';
+            if (Util::arrayTemItens($arrObject)) {
+                foreach ($arrObject as $object) {
+                    $bairroOrigem = ($object->getBairroOrigem() instanceof Bairro) ? $object->getBairroOrigem()->getNome() : 'N/D';
+                    $bairroDestino = ($object->getBairroDestino() instanceof Bairro) ? $object->getBairroDestino()->getNome() : 'N/D';
+                    
+                    $veiculo = 'N/D';
+                    $responsavel = 'N/D';
+                    $objVeiculo = $object->getVeiculo();
+                    if($objVeiculo instanceof Veiculo){
+                        $veiculo = $objVeiculo->getDescricao();
+                        $responsavel = ($objVeiculo->getUsuario() instanceof Usuario)?$objVeiculo->getUsuario()->getNome():'N/D';
+                    }
+                    
 
+                    $strCorpoTabela .= <<<EOT
+                    <tr>
+                        <td>Pontos</td>
+                        <td>{$veiculo}</td>
+                        <td>{$bairroOrigem}</td>
+                        <td>{$bairroDestino}</td>
+                        <td>{$object->getHoraInicio()}</td>
+                        <td>{$object->getHoraFim()}</td>
+                        <td>{$object->getPrecoMensalista()}</td>
+                        <td>{$object->getPrecoAvulso()}</td>
+                        <td>{$responsavel}</td>
+                    </tr>
+EOT;
+                }
+            }
+            $data['corpo_tabela'] = $strCorpoTabela;
+        }
+        
+        $data['COMBO_ORIGEM_UF'] = UFAction::getCombobox($post['origem_uf']);
+        $data['COMBO_DESTINO_UF'] = UFAction::getCombobox($post['destino_uf']);
+        
+        
+        return $data;
+    }
 }
 ?>

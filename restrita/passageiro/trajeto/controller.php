@@ -15,7 +15,7 @@ if($target == 'meusTrajetos'){
     $data['mensalista'] = MensalistaAction::getDataLista($_POST);
     $data['avulso'] = MensalistaAction::getDataLista($_POST);
 }elseif($target=='buscarTrajeto'){
-    
+    $data = TrajetoAction::getDataListaBusca($_POST);
 }
 
 //========TRATA O TARGET E O DIRECIONAMENTO
