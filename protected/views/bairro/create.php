@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Manage Bairro', 'url'=>array('admin')),
 );
 ?>
+<div class="col-md-10">
+<h2>Create Bairro</h2>
 
-<h1>Create Bairro</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?></div>

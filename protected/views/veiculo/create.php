@@ -12,7 +12,8 @@ $this->menu = array(
     array('label' => 'Manage Veiculo', 'url' => array('admin')),
 );
 ?>
+<div class="col-md-10">
+    <h1>Create Veiculo</h1>
 
-<h1>Create Veiculo</h1>
-
-<?php $this->renderPartial('_form', array('model' => $model)); ?>
+    <?php $this->renderPartial('_form', array('model' => $model)); ?>
+</div>

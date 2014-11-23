@@ -3,32 +3,15 @@
 class AdminController extends Controller {
 
     public $defaultAction = 'admin';
-    public $layout = '//layouts/column2';
     private $_model;
 
     /**
      * @return array action filters
      */
     public function filters() {
-        return CMap::mergeArray(parent::filters(), array(
-                    'accessControl', // perform access control for CRUD operations
-        ));
-    }
-
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
-    public function accessRules() {
         return array(
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'create', 'update', 'view'),
-                'users' => UserModule::getAdmins(),
-            ),
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
+            'rights',
+            'postOnly + delete', // we only allow deletion via POST request
         );
     }
 
@@ -71,27 +54,21 @@ class AdminController extends Controller {
      */
     public function actionCreate() {
         $model = new User;
-        $profile = new Profile;
-        $this->performAjaxValidation(array($model, $profile));
+        $this->performAjaxValidation(array($model));
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
             $model->activkey = Yii::app()->controller->module->encrypting(microtime() . $model->password);
-            $profile->attributes = $_POST['Profile'];
-            $profile->user_id = 0;
-            if ($model->validate() && $profile->validate()) {
+            if ($model->validate()) {
                 $model->password = Yii::app()->controller->module->encrypting($model->password);
                 if ($model->save()) {
-                    $profile->user_id = $model->id;
-                    $profile->save();
+                    
                 }
                 $this->redirect(array('view', 'id' => $model->id));
-            } else
-                $profile->validate();
+            }
         }
 
         $this->render('create', array(
             'model' => $model,
-            'profile' => $profile,
         ));
     }
 
@@ -101,28 +78,23 @@ class AdminController extends Controller {
      */
     public function actionUpdate() {
         $model = $this->loadModel();
-        $profile = $model->profile;
-        $this->performAjaxValidation(array($model, $profile));
+        $this->performAjaxValidation(array($model));
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
-            $profile->attributes = $_POST['Profile'];
 
-            if ($model->validate() && $profile->validate()) {
+            if ($model->validate()) {
                 $old_password = User::model()->notsafe()->findByPk($model->id);
                 if ($old_password->password != $model->password) {
                     $model->password = Yii::app()->controller->module->encrypting($model->password);
                     $model->activkey = Yii::app()->controller->module->encrypting(microtime() . $model->password);
                 }
                 $model->save();
-                $profile->save();
                 $this->redirect(array('view', 'id' => $model->id));
-            } else
-                $profile->validate();
+            }
         }
 
         $this->render('update', array(
             'model' => $model,
-            'profile' => $profile,
         ));
     }
 

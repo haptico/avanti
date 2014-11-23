@@ -3,48 +3,25 @@
 /* @var $model Mensalista */
 /* @var $form CActiveForm */
 ?>
+<?php
+$form = $this->beginWidget('CActiveForm', array(
+    'action' => Yii::app()->createUrl($this->route),
+    'method' => 'get',
+    'htmlOptions' => array(
+        'class' => 'form-inline'
+    )
+        ));
+?>
 
-<div class="wide form">
+<div class="form-group">
+    <?php echo $form->label($model, 'data_inicio', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'data_inicio', array('class' => 'form-control', 'placeholder' => 'Data Inicio')); ?>
+</div>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
-)); ?>
+<div class="form-group">
+    <?php echo $form->label($model, 'data_fim', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'data_fim', array('class' => 'form-control', 'placeholder' => 'Data Fim')); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'trajeto_id'); ?>
-		<?php echo $form->textField($model,'trajeto_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'ponto_id'); ?>
-		<?php echo $form->textField($model,'ponto_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'data_inicio'); ?>
-		<?php echo $form->textField($model,'data_inicio'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'data_fim'); ?>
-		<?php echo $form->textField($model,'data_fim'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
+<?php echo CHtml::submitButton('Buscar', array('class' => 'btn btn-default')); ?>
 <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->

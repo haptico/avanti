@@ -14,40 +14,71 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
-            <?php if (Yii::app()->user->isGuest) { ?>
-                <?php echo CHtml::beginForm($this->createAbsoluteUrl('/Login'), "post", array("class" => "navbar-form navbar-right", "role" => "form", "style" => "display:none;")); ?>
-                <div class="form-group">
-                    <?php $login = new UserLogin(); ?>
-                    <?php echo CHtml::activeTextField($login, 'username', array("placeholder" => Yii::t("user", "Email"), "class" => "form-control")) ?>
-                </div>
-                <div class="form-group">
-                    <?php echo CHtml::activePasswordField($login, 'password', array("placeholder" => Yii::t("user", "Password"), "class" => "form-control")) ?>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <?php echo CHtml::activeCheckBox($login, 'rememberMe'); ?> <?php echo Yii::t("user", "Remember me"); ?>
-                    </label>
-                </div>
-                <?php echo CHtml::submitButton(Yii::t("user", "Login"), array("type" => "submit", "class" => "btn btn-success")); ?>
-                <?php
-                echo CHtml::endForm();
-            } else {
-                ?>
 
-
-                <?php
-            }
-
+            <?php
             $this->widget('zii.widgets.CMenu', array(
                 'htmlOptions' => array('class' => 'nav navbar-nav'),
                 'items' => array(
                     array('label' => 'Home', 'url' => array('/')),
-                    array('label' => Yii::t("user", "Veiculos"), 'url' => array('/Veiculo')),
-//                    array('label' => Yii::t("user", 'About'), 'url' => array('Site/page', 'view' => 'about')),
-//                    array('label' => Yii::t("user", 'Contact'), 'url' => array('/Site/contact')),
-//                    array('label' => Yii::t("user", 'Login'), 'url' => array('/Login'), 'visible' => Yii::app()->user->isGuest),
-//                    array('label' => Yii::t("user", 'Logout') . ' (' . Yii::app()->user->name . ')', 'url' => array('/Logout'), 'visible' => !Yii::app()->user->isGuest)
+                    array('label' => Yii::t("user", "Usuários"), 'url' => array('/Admin')),
+                    array('label' => Yii::t("user", "Mensalistas"), 'url' => array('/Mensalista')),
+                    array('label' => Yii::t("user", "Avulso"), 'url' => array('/Avulso')),
+                    array(
+                        'label' => 'Veiculos <span class="caret"></span>',
+                        'url' => '#',
+                        'htmlOptions' => array('class' => 'dropdown-menu', "role" => "menu"),
+                        'linkOptions' => array(
+                            "class" => "dropdown-toggle",
+                            "data-toggle" => "dropdown",
+                            "role" => "button",
+                            "aria-expanded" => "false",
+                        ),
+                        'itemOptions' => array('class' => 'dropdown'),
+                        'items' => array(
+                            array('label' => Yii::t("user", "Veiculos"), 'url' => array('/Veiculo')),
+                            array('label' => Yii::t("user", "Tipos de Veiculo"), 'url' => array('/TipoVeiculo')),
+                        )
+                    ),
+                    array(
+                        'label' => 'Trajetos <span class="caret"></span>',
+                        'url' => '#',
+                        'htmlOptions' => array('class' => 'dropdown-menu', "role" => "menu"),
+                        'linkOptions' => array(
+                            "class" => "dropdown-toggle",
+                            "data-toggle" => "dropdown",
+                            "role" => "button",
+                            "aria-expanded" => "false",
+                        ),
+                        'itemOptions' => array('class' => 'dropdown'),
+                        'items' => array(
+                            array('label' => Yii::t("user", "Trajetos"), 'url' => array('/Trajeto')),
+                            array('label' => Yii::t("user", "Pontos"), 'url' => array('/Ponto')),
+                        )
+                    ),
+                    array(
+                        'label' => 'Localização <span class="caret"></span>',
+                        'url' => '#',
+                        'htmlOptions' => array('class' => 'dropdown-menu', "role" => "menu"),
+                        'linkOptions' => array(
+                            "class" => "dropdown-toggle",
+                            "data-toggle" => "dropdown",
+                            "role" => "button",
+                            "aria-expanded" => "false",
+                        ),
+                        'itemOptions' => array('class' => 'dropdown'),
+                        'items' => array(
+                            array('label' => Yii::t("user", "UF"), 'url' => array('/Uf')),
+                            array('label' => Yii::t("user", "Cidades"), 'url' => array('/Cidade')),
+                            array('label' => Yii::t("user", "Bairros"), 'url' => array('/Bairro')),
+                        )
+                    ),
+                    array('label' => Yii::t("user", "Logout") . ' (' . Yii::app()->user->name . ')', 'url' => $this->logoutUrl, 'visible' => !Yii::app()->user->isGuest),
                 ),
+                'encodeLabel' => false,
+                'submenuHtmlOptions' => array(
+                    'class' => 'dropdown-menu',
+                    "role" => "menu",
+                )
             ));
             ?>
         </div><!-- /.navbar-collapse -->

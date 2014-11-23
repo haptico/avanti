@@ -2,27 +2,16 @@
 
 class BairroController extends Controller {
 
-    /**
-     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-     * using two-column layout. See 'protected/views/layouts/column2.php'.
-     */
-    public $layout = '//layouts/column2';
+    public $defaultAction = 'admin';
 
     /**
      * @return array action filters
      */
     public function filters() {
         return array(
-            'accessControl', // perform access control for CRUD operations
+            'rights',
             'postOnly + delete', // we only allow deletion via POST request
         );
-    }
-
-    public function actionGetBairroByCidade($cidade_id) {
-        $list = Cidade::model()->findAllBySql('SELECT id, nome FROM bairro where cidade_id = :cidade_id', array(":cidade_id" => $cidade_id));
-        foreach ($list as $val) {
-            echo CHtml::tag('option', array('value' => $val["id"]), CHtml::encode($val["nome"]), true);
-        }
     }
 
     /**

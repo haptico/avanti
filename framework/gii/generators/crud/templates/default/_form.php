@@ -22,13 +22,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>\n"; ?>
 
-<div class="row">
-  <div class="col-md-12"><p class="note">Fields with <span class="required">*</span> are required.</p></div>
-</div>
 
-<div class="row">
-  <div class="col-md-12"><?php echo "<?php echo \$form->errorSummary(\$model, NULL, NULL, array()); ?>\n"; ?></div>
-</div>
+<p class="note">Fields with <span class="required">*</span> are required.</p>
+<?php echo "<?php echo \$form->errorSummary(\$model, NULL, NULL, array()); ?>\n"; ?>
 <?php
 foreach ($this->tableSchema->columns as $column) {
     if ($column->autoIncrement)

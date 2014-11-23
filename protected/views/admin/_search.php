@@ -1,54 +1,50 @@
-<div class="wide form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-    'action'=>Yii::app()->createUrl($this->route),
-    'method'=>'get',
-)); ?>
+<?php
+$form = $this->beginWidget('CActiveForm', array(
+    'action' => Yii::app()->createUrl($this->route),
+    'method' => 'get',
+    'htmlOptions' => array(
+        'class' => 'form-inline'
+    )
+        ));
+?>
 
-    <div class="row">
-        <?php echo $form->label($model,'id'); ?>
-        <?php echo $form->textField($model,'id'); ?>
-    </div>
 
-    <div class="row">
-        <?php echo $form->label($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20)); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'username', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'username', array('size' => 20, 'maxlength' => 20, 'class' => 'form-control', 'placeholder' => 'Nome do usuário')); ?>
+</div>
 
-    <div class="row">
-        <?php echo $form->label($model,'email'); ?>
-        <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'email', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'email', array('size' => 60, 'maxlength' => 128, 'class' => 'form-control', 'placeholder' => 'Email')); ?>
+</div>
 
-    <div class="row">
-        <?php echo $form->label($model,'activkey'); ?>
-        <?php echo $form->textField($model,'activkey',array('size'=>60,'maxlength'=>128)); ?>
-    </div>
 
-    <div class="row">
-        <?php echo $form->label($model,'create_at'); ?>
-        <?php echo $form->textField($model,'create_at'); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'create_at', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'create_at', array('class' => 'form-control date', 'placeholder' => 'Criado em')); ?>
+</div>
 
-    <div class="row">
-        <?php echo $form->label($model,'lastvisit_at'); ?>
-        <?php echo $form->textField($model,'lastvisit_at'); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'lastvisit_at', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'lastvisit_at', array('class' => 'form-control date', 'placeholder' => 'Atualizado em')); ?>
+</div>
+<div class="form-group">
+    <?php echo $form->label($model, 'activkey', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'activkey', array('size' => 60, 'maxlength' => 128, 'class' => 'form-control', 'placeholder' => 'Chave de ativiação')); ?>
+</div>
 
-    <div class="row">
-        <?php echo $form->label($model,'superuser'); ?>
-        <?php echo $form->dropDownList($model,'superuser',$model->itemAlias('AdminStatus')); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'superuser', array('class' => 'sr-only')); ?>
+    <?php echo $form->dropDownList($model, 'superuser', $model->itemAlias('AdminStatus'), array('class' => 'form-control', 'placeholder' => 'Super Usuário')); ?>
+</div>
 
-    <div class="row">
-        <?php echo $form->label($model,'status'); ?>
-        <?php echo $form->dropDownList($model,'status',$model->itemAlias('UserStatus')); ?>
-    </div>
+<div class="form-group">
+    <?php echo $form->label($model, 'status', array('class' => 'sr-only')); ?>
+    <?php echo $form->dropDownList($model, 'status', $model->itemAlias('UserStatus'), array('class' => 'form-control', 'placeholder' => 'Status')); ?>
+</div>
 
-    <div class="row buttons">
-        <?php echo CHtml::submitButton(Yii::t("user",'Search')); ?>
-    </div>
+<?php echo CHtml::submitButton(Yii::t("user", 'Search'), array('class' => 'btn btn-default')); ?>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->

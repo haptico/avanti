@@ -2,20 +2,12 @@
 /* @var $this UfController */
 /* @var $data Uf */
 ?>
-
-<div class="view">
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('sigla')); ?>:</b>
-	<?php echo CHtml::encode($data->sigla); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('nome')); ?>:</b>
-	<?php echo CHtml::encode($data->nome); ?>
-	<br />
-
-
+<div class="col-md-6">
+    <dl class="dl-horizontal">
+        	<dt><?php echo CHtml::encode($data->getAttributeLabel('id')); ?></dt>
+	<dd><?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?></dd>	<dt><?php echo CHtml::encode($data->getAttributeLabel('sigla')); ?></dt>
+	<dd><?php echo CHtml::encode($data->sigla); ?></dd>
+	<dt><?php echo CHtml::encode($data->getAttributeLabel('nome')); ?></dt>
+	<dd><?php echo CHtml::encode($data->nome); ?></dd>
+    </dl>
 </div>

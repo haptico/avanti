@@ -20,7 +20,7 @@
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jquery/ui/1.9.2/css/blitzer/jquery-ui-1.9.2.custom.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <!--<link href="<?php //echo Yii::app()->request->baseUrl;               ?>/css/justified-nav.css" rel="stylesheet">-->
+        <!--<link href="<?php //echo Yii::app()->request->baseUrl;  ?>/css/justified-nav.css" rel="stylesheet">-->
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/carousel.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet">
 
@@ -37,6 +37,8 @@
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jquery/2.1.1.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jquery/ui/1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jquery/ui/1.9.2/i18n/jquery.ui.datepicker-pt-BR.js"></script>
+
+        <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/3.1.1/js/bootstrap.js"></script>
     </head>
 
     <body>
@@ -44,7 +46,6 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/3.1.1/js/bootstrap.js"></script>
         <script type="text/javascript">
             $(function () {
                 $(".date").datepicker({

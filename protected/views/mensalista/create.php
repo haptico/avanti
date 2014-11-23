@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Manage Mensalista', 'url'=>array('admin')),
 );
 ?>
+<div class="col-md-10">
+<h2>Create Mensalista</h2>
 
-<h1>Create Mensalista</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?></div>

@@ -14,45 +14,72 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
-            <?php if (Yii::app()->user->isGuest) { ?>
-                <?php echo CHtml::beginForm($this->createAbsoluteUrl('/Login'), "post", array("class" => "navbar-form navbar-right", "role" => "form", "style" => "display:none;")); ?>
-                <div class="form-group">
-                    <?php $login = new UserLogin(); ?>
-                    <?php echo CHtml::activeTextField($login, 'username', array("placeholder" => Yii::t("user", "Email"), "class" => "form-control")) ?>
-                </div>
-                <div class="form-group">
-                    <?php echo CHtml::activePasswordField($login, 'password', array("placeholder" => Yii::t("user", "Password"), "class" => "form-control")) ?>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <?php echo CHtml::activeCheckBox($login, 'rememberMe'); ?> <?php echo Yii::t("user", "Remember me"); ?>
-                    </label>
-                </div>
-                <?php echo CHtml::submitButton(Yii::t("user", "Login"), array("type" => "submit", "class" => "btn btn-success")); ?>
-                <?php
-                echo CHtml::endForm();
-            } else {
-                ?>
-
-
-            <?php } ?>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 <li><a href="#section-home" class="slow-scrolling">Home</a></li>
                 <li><a href="#section-first" class="slow-scrolling">Busca</a></li>
-                <li><a href="#section-second" class="slow-scrolling">Cadastre-se</a></li>
-                <li><a href="#section-third" class="slow-scrolling">Login</a></li>
                 <li><a href="#section-quarto" class="slow-scrolling">Sobre</a></li>
                 <li><a href="#section-cinco" class="slow-scrolling">Contato</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <?php if (Yii::app()->user->isGuest) { ?>
+                        <a href="javascript:void(0)" id="popover" title="">Login</a>
+                        <div id ="login-form" style="display:none;">
+                            <?php echo CHtml::beginForm($this->createAbsoluteUrl('/Login'), "post", array("class" => "navbar-form navbar-right", "role" => "form", "style" => "margin-bottom: 15px")); ?>
+                            <div class="form-group">
+                                <?php $login = new UserLogin(); ?>
+                                <?php echo CHtml::activeTextField($login, 'username', array("placeholder" => Yii::t("user", "Email"), "class" => "form-control")) ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo CHtml::activePasswordField($login, 'password', array("placeholder" => Yii::t("user", "Password"), "class" => "form-control")) ?>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <?php echo CHtml::activeCheckBox($login, 'rememberMe'); ?> <?php echo Yii::t("user", "Remember me"); ?>
+                                </label>
+                            </div>
+                            <?php echo CHtml::submitButton(Yii::t("user", "Login"), array("type" => "submit", "class" => "btn btn-success")); ?>
+                            <?php echo CHtml::endForm(); ?>
+                        </div>
+                        <?php
+                    } else {
+                        $this->widget('zii.widgets.CMenu', array(
+                            'htmlOptions' => array('class' => 'nav navbar-nav'),
+                            'items' => array(
+                                array('label' => Yii::t("user", "Logout") . ' (' . Yii::app()->user->name . ')', 'url' => $this->logoutUrl, 'visible' => !Yii::app()->user->isGuest),
+                            ),
+                        ));
+                    }
+                    ?>
+                </li>
+                <li><a href="#section-second" class="slow-scrolling">Cadastre-se</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <?php echo $content; ?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/3.1.1/js/tooltip.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/3.1.1/js/popover.js"></script>
 <!-- Google -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL2xkLRGH5KKCHULrY7PEzDhBEsBvkwjE"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL2xkLRGH5KKCHULrY7PEzDhBEsBvkwjE"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/google/google-maps/infobox/infobox.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/google/google-maps/markerclusterer/markerclusterer.min.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $('#popover').popover({
+            trigger: 'click',
+            placement: 'bottom',
+            html: true,
+            title: function () {
+                return $("#popover-head").html();
+            },
+            content: function () {
+                return $("#login-form").html();
+            }
+        });
+    });
+
     var map;
     var idInfoBoxAberto;
     var infoBox = [];
@@ -86,13 +113,9 @@
         var enderecoPartida = $("#origem_endereco").text() + "," + $("#origem_bairro option:selected").text() + "," + $("#origem_cidade option:selected").text() + "," + $("#origem_uf option:selected").text() + ", Brasil";
         console.log(enderecoPartida);
 
-
-
-
         // Procurar na base de dados todos os destino
         var enderecoChegada = $("#destino_bairro option:selected").text() + "," + $("#destino_cidade option:selected").text() + "," + $("#destino_uf option:selected").text() + ", Brasil";
         console.log(enderecoChegada);
-
 
 //Barra da Tijuca,Rio de Janeiro,Rio de Janeiro, Brasil
 //Centro,Guapimirim,Rio de Janeiro, Brasil
@@ -123,7 +146,6 @@
             }
         });
     });
-
 
     function abrirInfoBox(id, marker) {
         if (typeof (idInfoBoxAberto) == 'number' && typeof (infoBox[idInfoBoxAberto]) == 'object') {

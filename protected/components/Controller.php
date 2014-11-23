@@ -6,13 +6,13 @@
  */
 class Controller extends RController {
 
-    public $registrationUrl = array("/Registration/");
-    public $recoveryUrl = array("/Recovery/recovery");
+    public $registrationUrl = array("/Registration");
+    public $recoveryUrl = array("/Recovery");
     public $loginUrl = array("/Login/");
-    public $logoutUrl = array("/Logout/logout");
+    public $logoutUrl = array("/Logout");
     public $profileUrl = array("/user/profile");
     public $returnUrl = array("/");
-    public $returnLogoutUrl = array("/Login/");
+    public $returnLogoutUrl = array("/Login");
 
     /**
      * @var string the default layout for the controller view. Defaults to 'column1',
@@ -52,8 +52,29 @@ class Controller extends RController {
     public function init() {
         parent::init();
 
-        if (!Yii::app()->user->isGuest) {
+        $roles = Rights::getAssignedRoles(Yii::app()->user->Id);
+        if (!Yii::app()->user->isGuest && key($roles) == "Admin") {
             $this->layout = '//layouts/admin';
+//            echo("Admin");
+        }
+        if (!Yii::app()->user->isGuest && key($roles) == "Authenticated") {
+            echo("Authenticated");
+            var_dump($this->layout);
+        }
+        if (!Yii::app()->user->isGuest && key($roles) == "Motoristas") {
+            echo("Motoristas");
+            var_dump($this->layout);
+        }
+        if (!Yii::app()->user->isGuest && key($roles) == "Passageiros") {
+            echo("Passageiros");
+            var_dump($this->layout);
+        }
+        if (!Yii::app()->user->isGuest && key($roles) == "Editor") {
+            echo("Editor");
+            var_dump($this->layout);
+        }
+        if (Yii::app()->user->isGuest) {
+//            echo("Guest");
         }
     }
 

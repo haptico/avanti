@@ -3,33 +3,25 @@
 /* @var $model Uf */
 /* @var $form CActiveForm */
 ?>
+<?php
+$form = $this->beginWidget('CActiveForm', array(
+    'action' => Yii::app()->createUrl($this->route),
+    'method' => 'get',
+    'htmlOptions' => array(
+        'class' => 'form-inline'
+    )
+        ));
+?>
 
-<div class="wide form">
+<div class="form-group">
+    <?php echo $form->label($model, 'sigla', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'sigla', array('class' => 'form-control', 'placeholder' => 'sigla')); ?>
+</div>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
-)); ?>
+<div class="form-group">
+    <?php echo $form->label($model, 'nome', array('class' => 'sr-only')); ?>
+    <?php echo $form->textField($model, 'nome', array('class' => 'form-control', 'placeholder' => 'nome')); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'sigla'); ?>
-		<?php echo $form->textField($model,'sigla',array('size'=>2,'maxlength'=>2)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'nome'); ?>
-		<?php echo $form->textField($model,'nome',array('size'=>32,'maxlength'=>32)); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
+<?php echo CHtml::submitButton('Buscar', array('class' => 'btn btn-default')); ?>
 <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->

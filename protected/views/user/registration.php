@@ -83,23 +83,23 @@ $this->breadcrumbs = array(
 //            }
 //        }
         ?>
-            <?php //if (UserModule::doCaptcha('registration')): ?>
-            <div class="row">
-                <?php echo $form->labelEx($model, 'verifyCode'); ?>
+        <?php //if (UserModule::doCaptcha('registration')): ?>
+        <div class="row">
+            <?php echo $form->labelEx($model, 'verifyCode'); ?>
 
-                <?php $this->widget('CCaptcha'); ?>
-        <?php echo $form->textField($model, 'verifyCode'); ?>
-        <?php echo $form->error($model, 'verifyCode'); ?>
+            <?php $this->widget('CCaptcha'); ?>
+            <?php echo $form->textField($model, 'verifyCode'); ?>
+            <?php echo $form->error($model, 'verifyCode'); ?>
 
-                <p class="hint"><?php echo Yii::t("user", "Please enter the letters as they are shown in the image above."); ?>
-                    <br/><?php echo Yii::t("user", "Letters are not case-sensitive."); ?></p>
-            </div>
-            <?php //endif; ?>
+            <p class="hint"><?php echo Yii::t("user", "Please enter the letters as they are shown in the image above."); ?>
+                <br/><?php echo Yii::t("user", "Letters are not case-sensitive."); ?></p>
+        </div>
+        <?php //endif; ?>
 
         <div class="row submit">
-        <?php echo CHtml::submitButton(Yii::t("user", "Register")); ?>
+            <?php echo CHtml::submitButton(Yii::t("user", "Register")); ?>
         </div>
 
-    <?php $this->endWidget(); ?>
+        <?php $this->endWidget(); ?>
     </div><!-- form -->
 <?php endif; ?>

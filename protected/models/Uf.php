@@ -81,6 +81,23 @@ class Uf extends CActiveRecord {
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort' => array(
+                'defaultOrder' => 'sigla, nome',
+                'attributes' => array(
+                    'nome' => array(
+                        'asc' => 'nome sigla',
+                        'desc' => 'nome desc, sigla',
+                    ),
+                    'sigla' => array(
+                        'asc' => 'sigla, nome',
+                        'desc' => 'sigla desc, nome',
+                    ),
+                    '*',
+                ),
+            ),
+            'pagination' => array(
+                'pageSize' => 10,
+            ),
         ));
     }
 

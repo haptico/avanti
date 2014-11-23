@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Manage Avulso', 'url'=>array('admin')),
 );
 ?>
+<div class="col-md-10">
+<h2>Create Avulso</h2>
 
-<h1>Create Avulso</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?></div>

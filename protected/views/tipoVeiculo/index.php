@@ -16,5 +16,8 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
+        'htmlOptions' => array(
+            'class' => 'rows'
+        ),
 	'itemView'=>'_view',
 )); ?>

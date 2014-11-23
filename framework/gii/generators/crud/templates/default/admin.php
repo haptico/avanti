@@ -34,16 +34,13 @@ return false;
 });
 ");
 ?>
-<div class="row">
-    <div class="col-md-12">
-        <h1>Manage <?php echo $this->pluralize($this->class2name($this->modelClass)); ?></h1>
+<div class="col-md-10">
+    <h1>Manage <?php echo $this->pluralize($this->class2name($this->modelClass)); ?></h1>
 
-        <p>
-            You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-            or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-        </p>
-    </div>
-</div>
+    <p>
+        You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+        or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+    </p>
 <?php echo "<?php echo CHtml::link('Busca avançada','#',array('class'=>'search-button')); ?>"; ?>
 
 <div class="search-form" style="display:none">
@@ -54,12 +51,34 @@ return false;
 
 <?php echo "<?php"; ?> $this->widget('zii.widgets.grid.CGridView', array(
 'id'=>'<?php echo $this->class2id($this->modelClass); ?>-grid',
-'dataProvider'=>$model->search(),
-'filter'=>$model,
-'columns'=>array(
-    array(
-            'class' => 'CButtonColumn',
+'dataProvider' => $model->search(),
+'htmlOptions' => array(
+    'class' => 'table-responsive'
+),
+'pagerCssClass' => 'dataTables_paginate paging_bootstrap',
+'itemsCssClass' => 'table table-striped table-hover table-bordered table-condensed',
+'cssFile' => false,
+'summaryCssClass' => 'dataTables_info',
+'summaryText' => 'Showing {start} to {end} of {count} entries',
+'template' => '<div class="row"><div class="col-md-4 col-sm-12">{summary}</div><div class="col-md-8 col-sm-12">{pager}</div></div>{items}<div class="row"><div class="col-md-4 col-sm-12">{summary}</div><div class="col-md-8 col-sm-12">{pager}</div></div><br />',
+'pager' => array(
+    'htmlOptions' => array(
+        'class' => 'pagination',
+    ),
+    'class' => 'CLinkPager',
+        'htmlOptions' => array(
+            'class' => 'pagination'
         ),
+    'header' => false,
+    'maxButtonCount' => 5,
+    'cssFile' => false,
+),
+'filter' => $model,
+'columns' => array(
+array(
+    'class' => 'CButtonColumn',
+    'template' => '{update}{delete}'
+),
 <?php
 $count = 0;
 foreach ($this->tableSchema->columns as $column) {
